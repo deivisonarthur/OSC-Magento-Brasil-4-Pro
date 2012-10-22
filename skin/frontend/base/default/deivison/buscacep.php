@@ -1,7 +1,7 @@
-<?php
+<?
 /*=========================================================================================================================================================
  *
- *  PROJETO OSC MAGENTO BRASIL - VERSÃO FINAL V4.0.1
+ *  PROJETO OSC MAGENTO BRASIL - VERSÃO FINAL V3.0
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *  O módulo One Step Checkout normatizado para a localização brasileira.
  *  site do projeto: http://onestepcheckout.com.br/
@@ -35,7 +35,6 @@
  */
 
 
-
 ///////////////////////////////////////////////////
 //INCUI A CLASSE PHPQUERY
 //(http://code.google.com/p/phpquery)
@@ -60,9 +59,7 @@ function simple_curl($url,$post=array(),$get=array()){
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	return curl_exec ($ch);
 }
-if(!isset($_GET['cep']) OR empty($_GET['cep'])){
-    exit;
-}
+
 ///////////////////////////////////////////////////
 //MONTA URL A SER EXPLORADA
 ///////////////////////////////////////////////////
@@ -93,8 +90,8 @@ $dados =
 //SEPARA A CIDADE DA UF DO RESULTADO ACIMA
 ///////////////////////////////////////////////////
   $dados['cidade/uf'] = explode('/',$dados['cidade/uf']);
-  $dados['cidade'] = trim(@$dados['cidade/uf'][0]);
-  $dados['uf'] = trim(@$dados['cidade/uf'][1]);
+  $dados['cidade'] = trim($dados['cidade/uf'][0]);
+  $dados['uf'] = trim($dados['cidade/uf'][1]);
   unset($dados['cidade/uf']);
 
 ///////////////////////////////////////////////////
@@ -102,8 +99,8 @@ $dados =
 //LADO DA RUA COMO PODE SER VISTO NESSE LINK
 //(http://m.correios.com.br/movel/buscaCepConfirma.do?cepEntrada=21061020&metodo=buscarCep)
 ///////////////////////////////////////////////////
-  $logradouro = explode('-',@$dados['logradouro']);
-  $dados['logradouro'] = trim(@$logradouro[0]);
+  $logradouro = explode('-',$dados['logradouro']);
+  $dados['logradouro'] = trim($logradouro[0]);
   unset($logradouro);
 
 ///////////////////////////////////////////////////
@@ -173,11 +170,7 @@ if ( isset($dados) ) {
             ('BR', 'TO', 'Tocantins'),
             ('BR', 'DF', 'Distrito Federal');
 */
-<<<<<<< HEAD
-        $texto = $dados['logradouro'].":".$dados['bairro'].":".$dados['cidade'].":".@$estado.":".@$num.";";
-=======
-        $texto = $dados['logradouro'].":".$dados['bairro'].":".$dados['cidade'].":".$uf.":".$num.":".@$estado.";";
->>>>>>> OSC PRO 4.0.1 Final
+        $texto = $dados['logradouro'].":".$dados['bairro'].":".$dados['cidade'].":".$uf.":".$num.":".$estado.";";
         echo $texto;
 
 }else {

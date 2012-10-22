@@ -1,7 +1,7 @@
 <?php
 /*=========================================================================================================================================================
  *
- *  PROJETO OSC MAGENTO BRASIL - VERSÃO FINAL V4.0.1
+ *  PROJETO OSC MAGENTO BRASIL - VERSÃO FINAL V3.0
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *  O módulo One Step Checkout normatizado para a localização brasileira.
  *  site do projeto: http://onestepcheckout.com.br/
@@ -34,6 +34,49 @@
 /*=========================================================================================================================================================
  */
 ?>
+
+
+
+<?php
+$jquery = Mage::getStoreConfig('onepagecheckout/general/jquery');
+if ($jquery !== '0') :
+?>
+<script type="text/javascript" src="<?=Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)?>frontend/base/default/deivison/jquery.js"></script>
+<script type="text/javascript" src="<?=Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)?>frontend/base/default/deivison/jquery.maskedinput-1.2.2.min.js"></script>
+<script type="text/javascript" src="<?=Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)?>frontend/base/default/deivison/deivison.js"></script>
+
+
+<?php endif; ?>
+
+
+
+
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
 <?php
 /**
  * Edit customer address template
@@ -57,40 +100,275 @@
             <li class="fields">
                 <?php echo $this->getNameBlockHtml() ?>
             </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <br style="clear: both" />
+            <?php
+			$tipopessoa = Mage::getStoreConfig('onepagecheckout/outrasopcoes/tipopessoaregistro');
+			if ($tipopessoa !== 'hidden') :
+            ?>
+
+      	 	<?php
+      	 		$attribute = Mage::getModel('eav/config')->getAttribute('customer','tipopessoa');
+      	 	?>
+                <ul style="list-style: none">
+
+                    <li style="float: left" class="editando">
+                            <label style="padding-left: 0px" for="persona_pf" <?php if ( $tipopessoa  === 'required' ){ echo 'class="required"'; }?>>Pessoa F&iacute;sica<input type="radio" style="margin-left: 5px" name="tipopessoa" id="persona_pf" value="Fisica" checked="" title="Pessoa Fisica" <?php if ( $tipopessoa  === 'required' ){ echo 'class="required"'; }?> ></label>
+                    </li>
+                    <li>
+                            <label style="padding-left: 15px" for="persona_pj" <?php if ( $tipopessoa  === 'required' ){ echo 'class="required"'; }?>>Pessoa Jur&iacute;dica<input type="radio" style="margin-left: 5px" name="tipopessoa" id="persona_pj" value="Juridica" title="Pessoa Juridica" <?php if ( $tipopessoa  === 'required' ){ echo 'class="required"'; }?> ></label>
+                    </li>
+
+                    <script type="text/javascript">
+                    //<![CDATA[
+                            $j('input[value*="<?php echo $this->htmlEscape($this->getCustomer()->getTipopessoa()) ?>"]').attr('checked', true);
+                    //]]>
+                    </script>
+
+                </ul>
+            <?php endif; ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <li class="fields boxpf">
+                <div class="customer-name">
+                      <?php
+            			$identidade = Mage::getStoreConfig('onepagecheckout/outrasopcoes/rgiregistro');
+            			if ($identidade !== 'hidden') : ?>
+                          <div class="field">
+          	                <label <?php if ( $identidade  === 'required' ){ echo 'class="required"'; }?> > <?php if ( $identidade  === 'required' ){ echo '<em>*</em>'; }?><?php echo $this->__('Identidade') ?></label>
+                              <div class="input-box">
+                                  <input type="text" name="rg" id="rg"  value="<?php echo $this->htmlEscape($this->getCustomer()->getRg()) ?>" title="<?php echo $this->__('Identidade'); ?>" class="input-text validate-number <?php if($identidade === 'required'){ echo ' required-entry';} ?>" />
+                              </div>
+                          </div>
+                      <?php endif; ?>
+                      <?php
+            			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/general/taxvat');
+            			if ($cpfcnpj !== '1') : ?>
+                          <div class="field">
+          	                <label <?php if ( $cpfcnpj  === 'required' ){ echo 'class="required"'; }?> > <?php if ( $cpfcnpj  === 'required' ){ echo '<em>*</em>'; }?><?php echo $this->__('CPF') ?></label>
+                              <div class="input-box">
+                                  <input type="text" id="cpfcnpj" name="cpfcnpj"   value="<?php echo $this->htmlEscape($this->getCustomer()->getCpfcnpj()) ?>" title="<?php echo $this->__('CPF'); ?>" class="input-text validar_cpf inputcpf <?php if($cpfcnpj === 'required'){ echo ' required-entry';} ?>" />
+                              </div>
+                          </div>
+                      <?php endif; ?>
+                      <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
+                      <?php if ($_taxvat->isEnabled() && $cpfcnpj === '1'): ?>
+                          <div class="field">
+                                <?php echo $_taxvat->setTaxvat($this->getCustomer()->getTaxvat())->toHtml() ?>
+                          </div>
+                      <?php endif ?>
+                </div>
+            </li>
+
+
+
+            <li class="fields boxpf">
+                <div class="customer-name">
+                        <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
+                        <?php if ($_dob->isEnabled()): ?>
+                            <div class="field">
+                                <?php echo $_dob->setDate($this->getCustomer()->getDob())->toHtml() ?>
+                            </div>
+                        <?php endif ?>
+                        <?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
+                        <?php if ($_gender->isEnabled()): ?>
+                            <div class="field">
+                                <?php echo $_gender->setGender($this->getCustomer()->getGender())->toHtml() ?>
+                            </div>
+                        <?php endif ?>
+                </div>
+            </li>
+
+
+
+
+
+
+
+
+
+
+
+            <li class="fields boxpj" style="display: none">
+                <div class="customer-name">
+                      <?php
+            			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/general/taxvat');
+            			if ($cpfcnpj !== '1') : ?>
+                          <div class="field">
+          	                <label <?php if ( $cpfcnpj  === 'required' ){ echo 'class="required"'; }?> > <?php if ( $cpfcnpj  === 'required' ){ echo '<em>*</em>'; }?><?php echo $this->__('CNPJ') ?></label>
+                              <div class="input-box">
+                                  <input type="text" id="cpfcnpj" name="cpfcnpj"  value="<?php echo $this->htmlEscape($this->getCustomer()->getCpfcnpj()) ?>"  title="<?php echo $this->__('CNPJ'); ?>" class="input-text validar_cpf2 inputcnpj <?php if($cpfcnpj === 'required'){ echo ' required-entry';} ?>" />
+                              </div>
+                          </div>
+                      <?php endif; ?>
+                      <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
+                      <?php if ($_taxvat->isEnabled() && $cpfcnpj === '1'): ?>
+                          <div class="field">
+                                <?php echo $_taxvat->setTaxvat($this->getCustomer()->getTaxvat())->toHtml() ?>
+                          </div>
+                      <?php endif ?>
+                        <?php
+            			$ie = Mage::getStoreConfig('onepagecheckout/outrasopcoes/ieregistro');
+            			if ($ie !== 'hidden') : ?>
+                            <div class="field">
+            	                <label <?php if ( $ie  === 'required' ){ echo 'class="required"'; }?> > <?php if ( $ie  === 'required' ){ echo '<em>*</em>'; }?><?php echo $this->__('IE (Inscri&ccedil;&atilde;o Estadual)') ?></label>
+                                <div class="input-box">
+                                    <input type="text" for="isento" name="ie" id="ie"  value="<?php echo $this->htmlEscape($this->getCustomer()->getIe()) ?>"   title="<?php echo $this->__('IE (Inscrição Estadual)'); ?>" class="input-text validate-alphanum <?php if($ie === 'required'){ echo ' required-entry';} ?>" />
+                                </div>
+
+                                <div class="control">
+                                    <div class="input-box">
+                                            <label for="isento"><input type="checkbox" name="isento" title="Isento?" value="1" id="isento" class="checkbox">Isento?</label>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
+
+                </div>
+            </li>
+
+
+            <li class="fields boxpj" style="display: none">
+                <div class="customer-name">
+                        <?php
+            			$company = Mage::getStoreConfig('onepagecheckout/outrasopcoes/empresaregistro');
+            			if ($company !== 'hidden') : ?>
+                            <div class="field">
+            	                <label <?php if ( $company  === 'required' ){ echo 'class="required"'; }?> > <?php if ( $company  === 'required' ){ echo '<em>*</em>'; }?><?php echo $this->__('Raz&atilde;o Social') ?></label>
+                                <div class="input-box">
+                                    <input type="text" name="empresa" id="empresa"  value="<?php echo $this->htmlEscape($this->getCustomer()->getEmpresa()) ?>"  title="<?php echo $this->__('Raz&atilde;o Social'); ?>" class="input-text <?php if($company === 'required'){ echo ' required-entry';} ?>" />
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        <?php
+            			$company2 = Mage::getStoreConfig('onepagecheckout/outrasopcoes/nomefantasiaregistro');
+            			if ($company2 !== 'hidden') : ?>
+                            <div class="field">
+            	                <label <?php if ( $company2  === 'required' ){ echo 'class="required"'; }?> > <?php if ( $company2  === 'required' ){ echo '<em>*</em>'; }?><?php echo $this->__('Nome Fantasia') ?></label>
+                                <div class="input-box">
+                                    <input type="text" name="nomefantasia" id="nomefantasia"  value="<?php echo $this->htmlEscape($this->getCustomer()->getNomefantasia()) ?>"  title="<?php echo $this->__('Nome Fantasia'); ?>" class="input-text <?php if($company2 === 'required'){ echo ' required-entry';} ?>" />
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                </div>
+            </li>
+            <br style="clear: both" />
+
+
+
+
+
+
+
+
+
+
+
+
             <li class="fields">
                 <div class="field">
                     <label for="telephone" class="required"><em>*</em><?php echo $this->__('Telephone') ?></label>
                     <div class="input-box">
-                        <input type="text" name="telephone" value="<?php echo $this->htmlEscape($this->getAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="input-text required-entry" id="telephone" />
+                        <input type="text" name="telephone" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="telephone" />
                     </div>
                 </div>
                 <div class="field">
-                    <?php $celular = Mage::getStoreConfig('onepagecheckout/address_form/celular'); ?>
-          			<?php if ($celular !== 'hidden') : ?>
-          				<div class="field">
-          					<label for="billing:fax"<?php if($celular === 'required') {echo ' class="required" ';}?>>
-          						<?php echo $this->__('Celular') ?><?php if($celular === 'required') {echo ' <em>*</em> ';}?>
-          					</label>
-          					
-          					<div class="data_area">
-          						<input type="text" id="celular" name="celular" value="<?php echo $this->escapeHtml($this->getAddress()->getCelular()) ?>" title="<?php echo $this->__('Celular') ?>" class="input-text <?php if($celular === 'required') {echo ' required-entry ';}?>" id="billing:fax" />
-          					</div>
-          				</div>
-                    <?php endif ?>
+                    <label for="fax"><?php echo $this->__('Fax') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="fax" id="fax" title="<?php echo $this->__('Fax') ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getFax()) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('fax') ?>" />
+                    </div>
                 </div>
             </li>
+
+
+            <li class="fields">
+                <?php
+                $celular	= Mage::getStoreConfig('onepagecheckout/address_form/celular');
+                ?>
+      			<?php if ($celular !== 'hidden') : ?>
+      				<div class="field">
+      					<label for="billing:fax"<?php if($celular === 'required') {echo ' class="required" ';}?>>
+      						<?php echo $this->__('Celular') ?>
+      					</label>
+      					<?php if($celular === 'required') {echo ' <sup>*</sup> ';}?>
+      					<div class="data_area">
+      						<input type="text" id="celular" name="celular" value="<?php echo $this->escapeHtml($this->getAddress()->getCelular()) ?>" title="<?php echo $this->__('Celular') ?>" class="input-text <?php if($celular === 'required') {echo ' required-entry ';}?>" id="billing:fax" />
+      					</div>
+      				</div>
+                  <?php endif ?>
+            </li>
+
+
+
         </ul>
     </div>
     <div class="fieldset">
         <h2 class="legend"><?php echo $this->__('Address') ?></h2>
         <ul class="form-list">
+
+            <?php if ($this->helper('customer/address')->isVatAttributeVisible()) : ?>
             <li class="wide">
-                <label for="street_1" class="required"><em>*</em><?php echo $this->__('Street Address') ?></label>
+                <label for="vat_id"><?php echo $this->__('VAT Number') ?></label>
                 <div class="input-box">
-                    <input type="text" name="street[]" value="<?php echo $this->htmlEscape($this->getAddress()->getStreet(1)) ?>" title="<?php echo $this->__('Street Address') ?>" id="street_1" class="input-text required-entry" />
+                    <input type="text" name="vat_id" value="<?php echo $this->escapeHtml($this->getAddress()->getVatId()) ?>" title="<?php echo $this->__('VAT Number') ?>" id="vat_id" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('vat_id') ?>" />
                 </div>
             </li>
-            
+            <?php endif; ?>
+
+
+            <li class="wide">
+                <div class="field">
+                    <label for="zip" class="required"><em>*</em><?php echo $this->__('Zip/Postal Code') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="postcode" id="billing:postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>"  class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>"  onblur="buscarEndereco('<?=Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)?>','billing');"/>
+                    </div>
+                </div>
+            </li>
+
+
+
+            <!--enderecao-->
+            <?php
+			$endereco = Mage::getStoreConfig('onepagecheckout/address_form/address');
+			if ($endereco !== 'hidden') : ?>
+                <!-- endereco-->
+				<li  class="wide">
+                    <label for="endereco" <?php if ( $endereco  === 'required' ){ echo 'class="required"'; }?> ><?php echo $this->__('Endere&ccedil;o') ?></label>
+					<?php if($endereco === 'required') { echo ' <sup>*</sup> ';}?>
+					<div class="data_area">
+						<input type="text" id="billing:street1" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1))   ?> " title="<?php echo $this->__('Endere&ccedil;o') ?>" class="input-text t1<?php if($endereco === 'required'){ echo ' required-entry';} ?>" />
+					</div>
+				</li>
+            <?php endif; ?>
             <!--Numero e Complemento-->
 			<?php
 			$complemento = Mage::getStoreConfig('onepagecheckout/address_form/address3');
@@ -103,9 +381,9 @@
         				<?php if ($numero !== 'hidden') : ?>
         					<div class="field">
         						<label for="billing:street2"<?php if($numero === 'required') { echo ' class="required" ';}?>>
-        							<?php echo $this->__('N&uacute;mero') ?><?php if($numero === 'required') {echo ' <em>*</em> ';}?>
+        							<?php echo $this->__('N&uacute;mero') ?>
         						</label>
-        						
+        						<?php if($numero === 'required') { echo ' <sup>*</sup> ';}?>
         						<div class="data_area">
             						<input type="text" id="billing:street2" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(2)) ?>" title="<?php echo $this->__('N&uacute;mero') ?>" class="input-text t1<?php if($numero === 'required'){ echo ' required-entry';} ?>" />
         						</div>
@@ -115,9 +393,9 @@
             			<?php if ($complemento !== 'hidden') : ?>
             				<div class="field">
             					<label for="billing:street3"<?php if($complemento === 'required') {echo ' class="required" ';}?>>
-            						<?php echo $this->__('Complemento') ?><?php if($complemento === 'required') {echo ' <em>*</em> ';}?>
+            						<?php echo $this->__('Complemento') ?>
             					</label>
-            					
+            					<?php if($complemento === 'required') {echo ' <sup>*</sup> ';}?>
             					<div class="data_area">
             						<input type="text" id="billing:street3" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(3))  ?>" title="<?php echo $this->__('Complemento') ?>" class="input-text t1<?php if($complemento === 'required'){ echo ' required-entry';} ?>" />
             					</div>
@@ -133,25 +411,31 @@
                 <!-- endereco-->
 				<li class="wide">
                     <label for="bairro" <?php if ( $bairro  === 'required' ){ echo 'class="required"'; }?> ><?php echo $this->__('Bairro') ?></label>
-					<?php if($bairro === 'required') { echo ' <em style="color: red;">*</em> ';}?>
+					<?php if($bairro === 'required') { echo ' <sup>*</sup> ';}?>
 					<div class="data_area">
 						<input type="text" id="billing:street4" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(4))  ?>" title="<?php echo $this->__('Bairro') ?>" class="input-text t1<?php if($bairro === 'required'){ echo ' required-entry';} ?>" />
 					</div>
 				</li>
             <?php endif; ?>
-            
-        <!--<?php for ($_i=2, $_n=$this->helper('customer/address')->getStreetLines(); $_i<=$_n; $_i++): ?>
-            <li class="wide">
-                <div class="input-box">
-                    <input type="text" name="street[]" value="<?php echo $this->htmlEscape($this->getAddress()->getStreet($_i)) ?>" title="<?php echo $this->__('Street Address %s', $_i) ?>" id="street_<?php echo $_i?>" class="input-text" />
-                </div>
-            </li-->
-        <?php endfor ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <li class="fields">
                 <div class="field">
                     <label for="city" class="required"><em>*</em><?php echo $this->__('City') ?></label>
                     <div class="input-box">
-                        <input type="text" name="city" value="<?php echo $this->htmlEscape($this->getAddress()->getCity()) ?>"  title="<?php echo $this->__('City') ?>" class="input-text required-entry" id="city" />
+                        <input type="text" name="city" value="<?php echo $this->escapeHtml($this->getAddress()->getCity()) ?>"  title="<?php echo $this->__('City') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('city') ?>" id="billing:city" />
                     </div>
                 </div>
                 <div class="field">
@@ -165,21 +449,19 @@
                             $('region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
                         //]]>
                         </script>
-                        <input type="text" id="region" name="region" value="<?php echo $this->htmlEscape($this->getAddress()->getRegion()) ?>"  title="<?php echo $this->__('State/Province') ?>" class="input-text" />
+                        <input type="text" id="region" name="region" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>"  title="<?php echo $this->__('State/Province') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?>" />
                     </div>
+
                 </div>
             </li>
-            <li class="fields">
-                <div class="field">
-                    <label for="zip" class="required"><em>*</em><?php echo $this->__('Zip/Postal Code') ?></label>
-                    <div class="input-box">
-                        <input type="text" name="postcode" value="<?php echo $this->htmlEscape($this->getAddress()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="zip" class="input-text validate-zip-international required-entry" />
-                    </div>
-                </div>
+            <li class="fields" >
                 <div class="field">
                     <label for="country" class="required"><em>*</em><?php echo $this->__('Country') ?></label>
                     <div class="input-box">
-                        <?php echo $this->getCountryHtmlSelect() ?>
+                        <?php //echo $this->getCountryHtmlSelect() ?>
+                        <select name="country_id" id="country" class="validate-select" title="Pais" >
+                            <option value="BR" selected="selected" >Brasil</option>
+                        </select>
                     </div>
                 </div>
             </li>
@@ -215,3 +497,79 @@
     new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
 //]]>
 </script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+    // Adicionar validacao de cpf e cnpj ao campo Taxvat
+    Validation.add('validar_cpf', 'O CPF informado \xE9 invalido', function(v){return validaCPF(v,0);});
+    Validation.add('validar_cpf2', 'O CNPJ informado \xE9 invalido', function(v){return validaCPF(v,0);});
+    Validation.add('validar_cpfcnpj', 'O CPF/CNPJ informado \xE9 invalido', function(v){return validaCPF(v,0);});
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+
+/*===================================================== ONLOAD ===========================================================*/
+
+        var tipovindobanco;
+        var existe;
+
+        /*Pega tipo pessoa vindo do banco e o seta*/
+        tipovindobanco = "<?php echo $this->htmlEscape($this->getCustomer()->getTipopessoa()) ?>";
+
+        /*Verifica se existe o Taxvat*/
+        existe = $j('input[name*="taxvat"]').length;
+
+
+        if(tipovindobanco == 'Fisica'){
+          /*fisica*/
+
+            /*Se existe o Taxvat alterna entre eles mudando o name conforme selecionado o tipo pessoa*/
+            if( existe != ''){
+                $j('input[name*="taxvat-old"]').attr('name', 'taxvat');
+                $j('input[name*="taxvat"]:eq(1)').attr('name', 'taxvat-old');
+
+                /*Se existe add a class validar_cpfcnpj*/
+                $j('input[name*="taxvat"]').attr('class', 'validar_cpfcnpj input-text');
+            }else{
+                $j('.inputcnpj').attr('name', 'NULL');
+                $j('.inputcpf').attr('name', 'cpfcnpj');
+            }
+
+            /*Exibe ou oculta os boxs*/
+            $j('.boxpj').hide();
+            $j('.boxpf').show();
+
+            /*Exibe ou oculta o entregar em outro endereço conforme a selecao do tipo pessoa*/
+            $j('li.options').find("label:contains('Entregar')").css('visibility', 'visible');
+            $j('input[name*="[same_as_billing]"]').css('visibility', 'visible');
+
+        }else if(tipovindobanco == 'Juridica'){
+          /*juricica*/
+
+            /*Se existe o Taxvat alterna entre eles mudando o name conforme selecionado o tipo pessoa*/
+            if( existe != ''){
+                $j('input[name*="taxvat-old"]').attr('name', 'taxvat');
+                $j('input[name*="taxvat"]:eq(0)').attr('name', 'taxvat-old');
+
+                /*Se existe add a class validar_cpfcnpj*/
+                $j('input[name*="taxvat"]').attr('class', 'validar_cpfcnpj input-text');
+            }else{
+                $j('.inputcnpj').attr('name', 'cpfcnpj');
+                $j('.inputcpf').attr('name', 'NULL');
+            }
+
+            /*Exibe ou oculta os boxs*/
+            $j('.boxpj').show();
+            $j('.boxpf').hide();
+
+            /*Exibe ou oculta o entregar em outro endereço conforme a selecao do tipo pessoa*/
+            $j('li.options').find("label:contains('Entregar')").css('visibility', 'hidden');
+            $j('input[name*="[same_as_billing]"]').css('visibility', 'hidden');
+        }
+
+//]]>
+</script>
+

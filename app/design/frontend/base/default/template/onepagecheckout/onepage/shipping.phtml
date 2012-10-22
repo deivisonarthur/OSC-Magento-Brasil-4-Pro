@@ -1,7 +1,7 @@
 <?php
 /*=========================================================================================================================================================
  *
- *  PROJETO OSC MAGENTO BRASIL - VERSÃO FINAL V4.0.1
+ *  PROJETO OSC MAGENTO BRASIL - VERSÃO FINAL V3.0
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *  O módulo One Step Checkout normatizado para a localização brasileira.
  *  site do projeto: http://onestepcheckout.com.br/
@@ -34,7 +34,6 @@
 /*=========================================================================================================================================================
  */
 
-
 $logged		= $this->isCustomerLoggedIn();
 $has_addr	= $this->customerHasAddresses();
 
@@ -44,7 +43,7 @@ if (!$this->getQuote()->isVirtual() && Mage::helper('onepagecheckout')->isShippi
 <ul>
     <li class="options">
         <input type="checkbox" class="checkbox" name="shipping[same_as_billing]" id="shipping:same_as_billing" value="1"<?php if($this->getShipAddress()->getSameAsBilling()){echo ' checked="checked" ';} ?> title="<?php echo $this->__('Ship to this address') ?>" onclick="shipping.setSameAsBilling(this.checked)" />
-        <label for="shipping:same_as_billing">
+        <label>
         	<?php echo $this->__('Ship to this address') ?>
         </label>
     </li>
@@ -121,8 +120,8 @@ if (!$this->getQuote()->isVirtual() && Mage::helper('onepagecheckout')->isShippi
 
             <!--cpf Taxvat-->
             <?php
-			$cpfcnpjtaxvat = Mage::getStoreConfig('onepagecheckout/address_form/cpfcnpjtaxvat');
-			if ($cpfcnpjtaxvat !== 'hidden') : ?>
+			$cpfcnpjtaxvat = Mage::getStoreConfig('onepagecheckout/general/taxvat');
+			if ($cpfcnpjtaxvat !== '0') : ?>
                 <!-- CNPJ e CPF shipping:taxvat-->
 				<div class="full">
                     <label for="shipping:taxvat" <?php if ( $cpfcnpjtaxvat  === 'required' ){ echo 'class="required"'; }?> >

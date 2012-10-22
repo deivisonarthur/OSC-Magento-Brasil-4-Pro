@@ -1,6 +1,6 @@
 /*=========================================================================================================================================================
  *
- *  PROJETO OSC MAGENTO BRASIL - VERSÃO FINAL V4.0.1
+ *  PROJETO OSC MAGENTO BRASIL - VERSÃO FINAL V3.0
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *  O módulo One Step Checkout normatizado para a localização brasileira.
  *  site do projeto: http://onestepcheckout.com.br/
@@ -42,14 +42,6 @@
 
 
 
-            $j('input').click( function(){
-                    $j('html head').find('title').text(  "OSC: Finalizando compra no campo [ " + $j(this).attr('title') + " ]"  );
-                    _gaq.push(['_trackPageview', '#' + $j(this).attr('name') + '']);
-            });
-
-            $j(':input').blur( function(){
-                    pageTracker._trackEvent("OSC no campo: ", "input_exit", $j(this).attr('name'));
-            });
 
 
             /*Limita os campos da data nascimento*/
@@ -71,8 +63,8 @@
                 existe = $j('input[name*="taxvat"]').length;
 
                 if(queme == 'Fisica'){
-                  /*fisica*/
 
+                  /*fisica*/
                     /*Se existe o Taxvat alterna entre eles mudando o name conforme selecionado o tipo pessoa*/
                     if( existe != ''){
 
@@ -80,9 +72,12 @@
                         $j('input[name="taxvat-old"]').attr('name', 'taxvat');
                         $j('input[name="taxvat"]:eq(1)').attr('name', 'taxvat-old');
 
+                        $j('input[name="taxvat-old"]').attr('class', 'input-text');
+                        $j('input[name="taxvat"]').attr('class', 'validar_cpfcnpj input-text');
+
                         /*BILLING*/
                         $j('input[name="billing[taxvat-old]"]').attr('name', 'billing[taxvat]');
-                        $j('input[name="billing[taxvat]"]:eq(1)').attr('name', 'billing[taxvat-old]');
+                        $j('input[name="billing[taxvat]"]:eq(1)').attr('name', 'billing[taxvat-old]"]');
 
                         /*LIMPA CAMPOS*/
                         $j('input[name="taxvat"]').val('');
@@ -121,9 +116,12 @@
                         $j('input[name="taxvat-old"]').attr('name', 'taxvat');
                         $j('input[name="taxvat"]:eq(0)').attr('name', 'taxvat-old');
 
+                        $j('input[name="taxvat-old"]').attr('class', 'input-text');
+                        $j('input[name="taxvat"]').attr('class', 'validar_cpfcnpj input-text');
+
                         /*BILLING*/
                         $j('input[name="billing[taxvat-old]"]').attr('name', 'billing[taxvat]');
-                        $j('input[name="billing[taxvat]"]:eq(0)').attr('name', 'billing[taxvat]');
+                        $j('input[name="billing[taxvat]"]:eq(0)').attr('name', 'billing[taxvat-old]');
 
                         /*LIMPA CAMPOS*/
                         $j('input[name="taxvat"]').val('');
@@ -386,6 +384,19 @@
                 $j(this).val(v);
 
             });
+
+
+
+
+            $j('input').click( function(){
+                    $j('html head').find('title').text(  "OSC: Finalizando compra no campo [ " + $j(this).attr('title') + " ]"  );
+                    _gaq.push(['_trackPageview', '#' + $j(this).attr('name') + '']);
+            });
+
+            $j(':input').blur( function(){
+                    pageTracker._trackEvent("OSC no campo: ", "input_exit", $j(this).attr('name'));
+            });
+
 
 
         });

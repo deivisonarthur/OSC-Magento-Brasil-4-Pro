@@ -24,16 +24,16 @@
                             <br style="clear: both;"/>
     					 	<a style="width: 439px; height: 88px; display: block; float: left" href="http://onestepcheckout.com.br" target="_blank" style="float: left;"><img src="http://onestepcheckout.com.br/img/osc-brasil-adm.png" /></a>
                             <div style="width: 439px; height: 88px; display: block; float: left; padding-left: 35px; padding-top:37px">
-                                <label style="font-size: 34px">Versao: <strong>PRO V4.0.1</strong></label>
+                                <label style="font-size: 34px">Vers&atilde;o: <strong>PRO V4.0.2</strong></label>
                             </div>
 
                             <br style="clear: both;"/>
 
                             <hr>
-
+                            <!--
                             <br /><br />
     					 	<p>
-    						 	Conheca o Projeto OSC-Magento-Brasil. O modulo One Step Checkout normatizado para a localizacao brasileira, gratuito e funciona nas versoes acima de 1.4 do Magento! O Checkout em Um Passo e oque faltava para a comunidade brasileira Magento.
+    						 	Conhe&ccedil;a o Projeto OSC-Magento-Brasil. O m&oacute;dulo One Step Checkout normatizado para a localiza&ccedil;&atilde;o brasileira, &eacute; gratuito e funciona nas vers&otilde;es acima de 1.4 do Magento! O Checkout em Um Passo &eacute; oque faltava para a comunidade brasileira Magento.
                                 <br /><br />
     						 	<h2>Mantido por: <a href="http://www.deivison.com.br/" target="_blank">Deivison Arthur</a> e <a href="http://www.xpdev.com.br/" target="_blank">Denis Colli Spalenza</a></h2>
     						</p>
@@ -44,8 +44,10 @@
                                  solucao gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doacao de qualquer valor, nao vou negar e vou ficar grato! voce<br />
                                  pode fazer isso visitando a pagina do projeto em: <a href="http://onestepcheckout.com.br" target="_blank">http://onestepcheckout.com.br</a><br />
                                  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                            <br /><br /><br /><br /><hr>
-
+                            <br /><br />
+                            Atencao! Habilite como opcional os campos Data Nascimento, Sexo e Taxvat em System/Configuration/Customer Configuration/Name and Address Options
+                            <br /><br /><hr>
+                            -->
     				 	</div>
     				 	]]></comment>
                     <frontend_type>text</frontend_type>
@@ -63,18 +65,9 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </enabled>
-                        <keygen translate="label" module="onepagecheckout">
-                            <label>Serial Number</label>
-                            <comment>Insire o serial para liberar a utilização do OSC</comment>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>2</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </keygen>
                         <jquery translate="label" module="onepagecheckout">
                             <label>Permitir biblioteca Jquery no OSC?</label>
-                            <comment>Obs: A biblioteca jquery roda em modo no conflict ($j) Ao desativar essa biblioteca desativará também os scripts complementares do formulário, como busca Ajax!</comment>
+                            <comment>Obs: A biblioteca jquery roda em modo no conflict ($j) Ao desativar essa biblioteca desativara tambem os scripts complementares do formulario, como busca Ajax!</comment>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>9</sort_order>
@@ -83,8 +76,8 @@
                             <show_in_store>1</show_in_store>
                         </jquery>
                         <tracoativo translate="label" module="onepagecheckout">
-                            <label>Permitir formatação do campo CEP?</label>
-                            <comment>Obs: Coloca o "-" no CEP, porém se estiver trabalhando com o modulo Matrix Rates não trabalha com o "-"</comment>
+                            <label>Permitir formatacao do campo CEP?</label>
+                            <comment>Obs: Coloca o "-" no CEP, porem se estiver trabalhando com o modulo Matrix Rates nao trabalha com o "-"</comment>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>9</sort_order>
@@ -93,25 +86,15 @@
                             <show_in_store>1</show_in_store>
                         </tracoativo>
                         <title translate="label" module="cms">
-                            <label>Título da página</label>
+                            <label>Titulo da pagina</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </title>
-<!--                        <shipping_method translate="label" module="onepagecheckout">
-                            <label>Default Shipping Method</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_shipping_allmethods</source_model>
-                            <sort_order>20</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </shipping_method>
--->
                         <payment_method translate="label" module="onepagecheckout">
-                            <label>Método de pagamento default</label>
+                            <label>Metodo de pagamento default</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_payment_allmethods</source_model>
                             <sort_order>30</sort_order>
@@ -129,8 +112,8 @@
                             <show_in_store>1</show_in_store>
                         </country>
                         <guest_checkout translate="label" module="checkout">
-                            <label>Permintir compras por anônimo?</label>
-                            <comment>Ou seja, o usuário podera efetuar compras sem a necessidade de se cadastrar. Obs: Recomendo sempre cadastrar o usuário, ou seja, setar que não permite compras por anônimo!</comment>
+                            <label>Permintir compras por anonimo?</label>
+                            <comment>Ou seja, o usuario podera efetuar compras sem a necessidade de se cadastrar. Obs: Recomendo sempre cadastrar o usuario, ou seja, setar que nao permite compras po anonimo!</comment>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>60</sort_order>
@@ -140,7 +123,7 @@
                         </guest_checkout>
                         <taxvat translate="label" module="onepagecheckout">
                             <label>Campo CPF/CNPJ pelo TaxVat</label>
-                            <comment>Caso haja a necessidade de usar o CPF/CNPJ pelo campo Taxvat coloque SIM. OSB: Recomenda-se não utilizar o Taxvat mas sim o campo criado para esse fim</comment>
+                            <comment>Caso haja a necessidade de usar o CPF/CNPJ pelo campo Taxvat coloque SIM. OSB: Recomenda-se nao utilizar o Taxvat mas sim o campo criado para esse fim</comment>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>9</sort_order>
@@ -148,6 +131,16 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </taxvat>
+
+
+                        <analytics translate="label" module="cms">
+                            <label>Codigo do Analytics para rastreamento no OSC</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </analytics>
 <!--
                         <guest_checkout1 translate="label" module="checkout">
                             <label>Exibir login padrao do OSC</label>
@@ -158,7 +151,6 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </guest_checkout1>
-
                         <guest_checkout2 translate="label" module="checkout">
                             <label>Exibir login padrao do Magento</label>
                             <frontend_type>select</frontend_type>
@@ -168,8 +160,6 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </guest_checkout2>
-
-
                         <habilitarcad translate="label" module="onepagecheckout">
                             <label>Ocultar cadastro do usuario?</label>
                             <comment>obs: Opcao valida caso o [Exibir login padrao do Magento] esteja ativo</comment>
@@ -182,8 +172,8 @@
                         </habilitarcad>
 -->
                         <shipping_address translate="label" module="onepagecheckout">
-                            <label>Permitir entregar em outro endereço?</label>
-                            <comment>Válido somente para compras por pessoa física</comment>
+                            <label>Permitir entregar em outro endereco?</label>
+                            <comment>Valido somente para compras por pessoa fisica</comment>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>70</sort_order>
@@ -204,7 +194,7 @@
 
 -->
                         <comment translate="label" module="onepagecheckout">
-                            <label>Permitir comentários?</label>
+                            <label>Permitir comentarios?</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>90</sort_order>
@@ -219,7 +209,7 @@
 <!-- Parte 2 ============== -->
 
                 <address_form translate="label comment">
-                    <label>Configuração do OSC(Billing e Shipping)</label>
+                    <label>Configuracao do OSC(Billing e Shipping)</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>30</sort_order>
                     <show_in_default>1</show_in_default>
@@ -247,6 +237,7 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </cpfcnpj>
+
                         <tipopessoa translate="label" module="checkout">
                             <label>Tipo Pessoa</label>
                             <frontend_type>select</frontend_type>
@@ -355,7 +346,7 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </country>
-
+-->
                         <sexo translate="label" module="checkout">
                             <label>Sexo</label>
                             <frontend_type>select</frontend_type>
@@ -374,7 +365,7 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </aniversario>
--->
+
                         <phone translate="label" module="checkout">
                             <label>Telephone</label>
                             <frontend_type>select</frontend_type>
@@ -503,7 +494,7 @@
 -->
 
                 <agreements translate="label" module="checkout">
-                    <label>Termos e condições</label>
+                    <label>Termos e condicoes</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>50</sort_order>
                     <show_in_default>1</show_in_default>

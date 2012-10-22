@@ -1,38 +1,3 @@
-/*=========================================================================================================================================================
- *
- *  PROJETO OSC MAGENTO BRASIL - VERSÃO FINAL V4.0.1
- *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *  O módulo One Step Checkout normatizado para a localização brasileira.
- *  site do projeto: http://onestepcheckout.com.br/
- *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *
- *
- *
- *  Mmantenedores do Projeto:
- *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *
- *  Deivison Arthur Lemos Serpa
- *  deivison.arthur@gmail.com
- *  www.deivison.com.br
- *  (21)9203-8986
- *
- *  Denis Colli Spalenza
- *  http://www.xpdev.com.br
- *
- *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *
- *
- *
- *  GOSTOU DO MÓDULO?
- *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *  Se você gostou, se foi útil para você, se fez você economizar aquela grana pois estava prestes a pagar caro por aquele módulo pago, pois não achava uma
- *  solução gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doação de qualquer valor, não vou negar e vou ficar grato! você
- *  pode fazer isso visitando a página do projeto em: http://onestepcheckout.com.br/
- *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *
-/*=========================================================================================================================================================
- */
-
 var OPC = Class.create();
 OPC.prototype = {
     initialize: function (form, urls, agreement) {
@@ -234,9 +199,6 @@ OPC.prototype = {
         }
         checkout.setLoadWaiting(false);
         $('review-please-wait').hide();
-
-
-
         if (response.update_section) {
             for (var i in response.update_section) {
                 ch_obj = $('checkout-' + i + '-load');
@@ -245,17 +207,12 @@ OPC.prototype = {
                         'width': 'auto',
                         'height': 'auto'
                     }).update(response.update_section[i]).setOpacity(1).removeClassName('loading');
-
                     if (i === 'shipping-method') {
                         shippingMethod.addObservers()
                     }
                 }
             }
         }
-
-
-
-
         if (response.duplicateBillingInfo) {
             shipping.syncWithBilling()
         }
@@ -714,7 +671,7 @@ OPC.Window.prototype = {
         $(document.body).insert(this.window)
     },
     _attachEventListeners: function () {
-
+    	
         this.close.observe('click', this.hide.bind(this));
         document.observe('keypress', this._onKeyPress.bind(this));
         if (this.config.triggers) {
@@ -762,8 +719,6 @@ function open_login() {
     }
     return url
 }
-
-
 window.onload = function () {
     checkout.update({
         'payment-method': 1,

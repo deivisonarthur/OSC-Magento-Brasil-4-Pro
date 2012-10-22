@@ -639,47 +639,16 @@ if(  @$estadoTeste2[0]['attribute_code'] != "nomefantasia"  ){
 
 
 
-
-
-
-
-
-
-/*==============================================================================
- *
- *
- *  Update do campo tipo pessoa para nao obrigatorio
- *
- *
- * =============================================================================
- */
-
-$tabela2 = $this->getTable('eav/attribute'); //pega o nome da tabela que contém os atributos no
-//Tabela onde é adionado os campos eav_attribute
-
-
-/*==============================================================================
- *  Testa par ver se o atributo tipopessoa já existe no sistema. Se já existe então remove ele para add o outro la de baixo
- * =============================================================================
- */
-$sqlTeste22 = "SELECT * FROM {$tabela2} WHERE attribute_code = 'tipopessoa'";
-$connectionTeste22 = Mage::getSingleton('core/resource')->getConnection('core_read');
-$estadoTeste22 = $connectionTeste22->fetchAll($sqlTeste22);
-
-if(  @$estadoTeste22[0]['attribute_code'] == "tipopessoa"  ){
-      /*Update do campo tipo pessoa para nao obrigatorio*/
-      $setup->removeAttribute('customer_address', 'tipopessoa');
-      $setup->removeAttribute('customer', 'tipopessoa');
-}
-
-
+    /*Update do campo tipo pessoa para nao obrigatorio*/
+    $setup->removeAttribute('customer_address', 'tipopessoa');
+    $setup->removeAttribute('customer', 'tipopessoa');
 
 
 
 /*==============================================================================
  *
  *
- *  UPDATE - Adiciona os campos Tipo Pessoa, empresa e nomefantasia
+ *  Adiciona os campos Tipo Pessoa, empresa e nomefantasia
  *
  *
  * =============================================================================
@@ -698,7 +667,6 @@ $connectionTeste2 = Mage::getSingleton('core/resource')->getConnection('core_rea
 $estadoTeste2 = $connectionTeste2->fetchAll($sqlTeste2);
 
 if(  @$estadoTeste2[0]['attribute_code'] != "tipopessoa"  ){
-
 
         /*==============================================================================
          *  Adiciona o campo Tipo Pessoa no billing e shipping
@@ -759,6 +727,8 @@ if(  @$estadoTeste2[0]['attribute_code'] != "tipopessoa"  ){
         ");
 
 };
+
+
 
 
 $installer->endSetup();

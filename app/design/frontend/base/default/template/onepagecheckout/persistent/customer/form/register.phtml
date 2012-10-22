@@ -1,7 +1,7 @@
 <?php
 /*=========================================================================================================================================================
  *
- *  PROJETO OSC MAGENTO BRASIL - VERSÃO FINAL V4.0.1
+ *  PROJETO OSC MAGENTO BRASIL - VERSÃO FINAL V3.0
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *  O módulo One Step Checkout normatizado para a localização brasileira.
  *  site do projeto: http://onestepcheckout.com.br/
@@ -112,8 +112,8 @@ if ($jquery !== '0') :
                           </div>
                       <?php endif; ?>
                       <?php
-            			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/outrasopcoes/cpfcnpjregistro');
-            			if ($cpfcnpj !== 'hidden') : ?>
+            			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/general/taxvat');
+            			if ($cpfcnpj !== '1') : ?>
                           <div class="field">
           	                <label <?php if ( $cpfcnpj  === 'required' ){ echo 'class="required"'; }?> > <?php if ( $cpfcnpj  === 'required' ){ echo '<em>*</em>'; }?><?php echo $this->__('CPF') ?></label>
                               <div class="input-box">
@@ -122,7 +122,7 @@ if ($jquery !== '0') :
                           </div>
                       <?php endif; ?>
                       <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
-                      <?php if ($_taxvat->isEnabled() && $cpfcnpj === 'hidden'): ?>
+                      <?php if ($_taxvat->isEnabled() && $cpfcnpj === '1'): ?>
                           <div class="field">
                                 <?php echo $_taxvat->setTaxvat($this->getFormData()->getTaxvat())->toHtml() ?>
                           </div>
@@ -162,8 +162,8 @@ if ($jquery !== '0') :
             <li class="fields boxpj" style="display: none">
                 <div class="customer-name">
                       <?php
-            			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/outrasopcoes/cpfcnpjregistro');
-            			if ($cpfcnpj !== 'hidden') : ?>
+            			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/general/taxvat');
+            			if ($cpfcnpj !== '1') : ?>
                           <div class="field">
           	                <label <?php if ( $cpfcnpj  === 'required' ){ echo 'class="required"'; }?> > <?php if ( $cpfcnpj  === 'required' ){ echo '<em>*</em>'; }?><?php echo $this->__('CNPJ') ?></label>
                               <div class="input-box">
@@ -172,7 +172,7 @@ if ($jquery !== '0') :
                           </div>
                       <?php endif; ?>
                       <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
-                      <?php if ($_taxvat->isEnabled() && $cpfcnpj === 'hidden'): ?>
+                      <?php if ($_taxvat->isEnabled() && $cpfcnpj === '1'): ?>
                           <div class="field">
                                 <?php echo $_taxvat->setTaxvat($this->getFormData()->getTaxvat())->toHtml() ?>
                           </div>
@@ -396,6 +396,7 @@ if ($jquery !== '0') :
         /*Se existe add a class validar_cpfcnpj*/
         if( existe != ''){
             $j('input[name*="taxvat"]').attr('class', 'validar_cpfcnpj input-text');
+            $j('input[name*="taxvat-old"]').attr('class', 'input-text');
         }
 //]]>
 </script>
