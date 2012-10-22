@@ -1,9 +1,20 @@
-Módulo OSC-Magento-Brasil – Normatização do módulo para o padrão brasileiro
+Módulo OSC-Magento-Brasil 4.0 Pro - Agora Free! – Normatização do módulo para o padrão brasileiro
 =================
 O projeto OCS-MAgento-Brasil é uma iniciativa para traduzir e adaptar o módulo free de OSC(One Step Checkout) para Magento chamado IWD OnePageCheckout. O módulo irá traduzir, adicionar estados, formatar, validar campos e adicionar novos campos. Iremos tratar os principais campos, como: Rua, Bairro, Cidade, Estado, Cep com busca por Ajax com busca nos Correios, CPF/CNPJ, IE(Inscrição Estadual), tipo pessoa, Telefone, Celular,…
 
 Importante!
 =================
+Versão 4.0 Pro: Olá pessoal gostaria de comunicar estou abrindo o source do OSC pro 4.0 como FREE, acho que a necessidade desse módulo é muito grande e sua importância para comunidade também para que eu possa simplesmente travar ao financiadores que comprarem! :)
+
+A participação da comunidade no desenvolvimento e colaboração no módulo é muito importante, pois é muito difícil tocar um projeto Open Source desse nível. 
+
+Atenção!!!
+Existem 2 versões no GITHUB a 3.2 e agora a 4.0
+3.2 = https://github.com/deivisonarthur/OSC-Magento-Brasil
+4.0.1 = Essa aqui!
+Após deixarmos 100% o 4.0.1 irei manter somente um repositório, como dito acima a contribuição é sempre bem vinda seja ela financeiramente ou por implementações no código!
+
+
 #####################################################################
 #     Faça sempre backup antes de realizar qualquer modificação!    #
 #####################################################################
@@ -57,6 +68,18 @@ Pensei por diversas vezes em colocar ou não esse módulo FREE! Por um lado eu p
 
 PS: Coloquei o projeto como sendo versão final, mas na verdade sei que será somente o começo né rsrs, pois sei oque o volume que receberei de dicas e acertos vai ser muito grande! Na verdade a versão final representará o ponto que irei pegar bem menos para mexer no projeto e deixarei o projeto aberto mais a contribuições da comunidade pelo Github.
 
+Release da versão Final 4.0
+=================
+* Cadastro dos dados pessoas ou da empresa somente na primeira vez;
+* Opção de desabilitar formatação nos telefones (Obs a formatação desse campo já esta pronto para os cel de SP);
+* Exibição dos campos conforme tipo de escolha PF ou PJ no OSC, ou seja, só será habilitado para exibir RG, CPF, DT Nascimento e Sexo se a escolha for PF.
+* Exibição dos campos conforme tipo de escolha PF ou PJ no Cadastro;
+* Campo para CPF e CNPJ com formatação independentes;
+* Aperfeiçoamento da formatação do campo CEP;
+* Customização do layout para ficar mais enxuto, ou seja, Formulário menor;
+* Conserto do Ajax da escolha do estado por UF e não por posição no Select;
+* Conserto atributo tipopessoa
+* E outroas..
 
 Release da versão Final 3.0
 =================
