@@ -2,11 +2,7 @@
 <config>
     <modules>
         <DeivisonArthur_OnepageCheckout>
-<<<<<<< HEAD
-            <version>4.0.0</version>
-=======
             <version>4.0.1</version>
->>>>>>> OSC PRO 4.0.1 Final
         </DeivisonArthur_OnepageCheckout>
     </modules>
     <!-- Adicionado -->

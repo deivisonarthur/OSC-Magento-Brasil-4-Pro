@@ -24,20 +24,16 @@
                             <br style="clear: both;"/>
     					 	<a style="width: 439px; height: 88px; display: block; float: left" href="http://onestepcheckout.com.br" target="_blank" style="float: left;"><img src="http://onestepcheckout.com.br/img/osc-brasil-adm.png" /></a>
                             <div style="width: 439px; height: 88px; display: block; float: left; padding-left: 35px; padding-top:37px">
-<<<<<<< HEAD
-                                <label style="font-size: 34px">Vers&atilde;o: <strong>PRO V4.0</strong></label>
-=======
-                                <label style="font-size: 34px">Vers&atilde;o: <strong>PRO V4.0.1</strong></label>
->>>>>>> OSC PRO 4.0.1 Final
+                                <label style="font-size: 34px">Versao: <strong>PRO V4.0.1</strong></label>
                             </div>
 
                             <br style="clear: both;"/>
 
                             <hr>
-                            <!--
+
                             <br /><br />
     					 	<p>
-    						 	Conhe&ccedil;a o Projeto OSC-Magento-Brasil. O m&oacute;dulo One Step Checkout normatizado para a localiza&ccedil;&atilde;o brasileira, &eacute; gratuito e funciona nas vers&otilde;es acima de 1.4 do Magento! O Checkout em Um Passo &eacute; oque faltava para a comunidade brasileira Magento.
+    						 	Conheca o Projeto OSC-Magento-Brasil. O modulo One Step Checkout normatizado para a localizacao brasileira, gratuito e funciona nas versoes acima de 1.4 do Magento! O Checkout em Um Passo e oque faltava para a comunidade brasileira Magento.
                                 <br /><br />
     						 	<h2>Mantido por: <a href="http://www.deivison.com.br/" target="_blank">Deivison Arthur</a> e <a href="http://www.xpdev.com.br/" target="_blank">Denis Colli Spalenza</a></h2>
     						</p>
@@ -49,7 +45,7 @@
                                  pode fazer isso visitando a pagina do projeto em: <a href="http://onestepcheckout.com.br" target="_blank">http://onestepcheckout.com.br</a><br />
                                  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
                             <br /><br /><br /><br /><hr>
-                            -->
+
     				 	</div>
     				 	]]></comment>
                     <frontend_type>text</frontend_type>
