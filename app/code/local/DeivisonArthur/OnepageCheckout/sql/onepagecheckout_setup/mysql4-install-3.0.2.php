@@ -2,9 +2,9 @@
 
 /*=========================================================================================================================================================
  *
- *  PROJETO OSC MAGENTO BRASIL - VERSÃO FINAL V3.0
+ *  PROJETO OSC MAGENTO BRASIL - VERSï¿½O FINAL V3.0
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *  O módulo One Step Checkout normatizado para a localização brasileira.
+ *  O mï¿½dulo One Step Checkout normatizado para a localizaï¿½ï¿½o brasileira.
  *  site do projeto: http://onestepcheckout.com.br/
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
@@ -25,11 +25,11 @@
  *
  *
  *
- *  GOSTOU DO MÓDULO?
+ *  GOSTOU DO Mï¿½DULO?
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *  Se você gostou, se foi útil para você, se fez você economizar aquela grana pois estava prestes a pagar caro por aquele módulo pago, pois não achava um
- *  solução gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doação de qualquer valor, não vou negar e vou ficar grato, você
- *  pode fazer isso visitando a página do projeto em: http://onestepcheckout.com.br/
+ *  Se vocï¿½ gostou, se foi ï¿½til para vocï¿½, se fez vocï¿½ economizar aquela grana pois estava prestes a pagar caro por aquele mï¿½dulo pago, pois nï¿½o achava um
+ *  soluï¿½ï¿½o gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doaï¿½ï¿½o de qualquer valor, nï¿½o vou negar e vou ficar grato, vocï¿½
+ *  pode fazer isso visitando a pï¿½gina do projeto em: http://onestepcheckout.com.br/
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
 /*=========================================================================================================================================================
@@ -40,9 +40,9 @@
 $installer = $this;
 
 
-$installer->startSetup(); //inicia a instalação
+$installer->startSetup(); //inicia a instalaï¿½ï¿½o
 
-$tabela = $this->getTable('directory/country_region'); //pega o nome da tabela que contém os estados no magento
+$tabela = $this->getTable('directory/country_region'); //pega o nome da tabela que contï¿½m os estados no magento
 
 
 
@@ -61,7 +61,7 @@ $estadoTeste = $connectionTeste->fetchAll($sqlTeste);
 
 
 /*==============================================================================
- *  Antes de inserir os estados, testa para ver se existe o estado AC para não inserir o cadastro dos estados 2x
+ *  Antes de inserir os estados, testa para ver se existe o estado AC para nï¿½o inserir o cadastro dos estados 2x
  * =============================================================================
  */
 if(  @$estadoTeste[0]['code'] != "AC"  ){
@@ -109,7 +109,7 @@ if(  @$estadoTeste[0]['code'] != "AC"  ){
         $estado = $connection->fetchAll($sql);
         $id_acre = $estado[0]['region_id']; //priemiro id dos estados
 
-        $tabela_nome = $this->getTable('directory/country_region_name'); //pega o nome da tabela que contém os nomes dos estados no magento. Essa tabela pode conter traduções dos nomes dos estados
+        $tabela_nome = $this->getTable('directory/country_region_name'); //pega o nome da tabela que contï¿½m os nomes dos estados no magento. Essa tabela pode conter traduï¿½ï¿½es dos nomes dos estados
 
         $comando =  "INSERT INTO `{$tabela_nome}` (`locale`, `region_id`, `name`) VALUES
         ('pt_BR', '". $id_acre ."', 'Acre'),
@@ -157,12 +157,12 @@ if(  @$estadoTeste[0]['code'] != "AC"  ){
  * =============================================================================
  */
 
-$tabela2 = $this->getTable('eav/attribute'); //pega o nome da tabela que contém os atributos no
-//Tabela onde é adionado os campos eav_attribute
+$tabela2 = $this->getTable('eav/attribute'); //pega o nome da tabela que contï¿½m os atributos no
+//Tabela onde ï¿½ adionado os campos eav_attribute
 
 
 /*==============================================================================
- *  Testa par ver se o atributo tipopessoa já existe no sistema
+ *  Testa par ver se o atributo tipopessoa jï¿½ existe no sistema
  * =============================================================================
  */
 $sqlTeste2 = "SELECT * FROM {$tabela2} WHERE attribute_code = 'tipopessoa'";
@@ -234,7 +234,7 @@ if(  @$estadoTeste2[0]['attribute_code'] != "tipopessoa"  ){
 
 
 /*==============================================================================
- *  Testa par ver se o atributo rg já existe no sistema
+ *  Testa par ver se o atributo rg jï¿½ existe no sistema
  * =============================================================================
  */
 $sqlTeste2 = "SELECT * FROM {$tabela2} WHERE attribute_code = 'rg'";
@@ -298,7 +298,7 @@ if(  @$estadoTeste2[0]['attribute_code'] != "rg"  ){
         ");
 };
 /*==============================================================================
- *  Testa par ver se o atributo ie já existe no sistema
+ *  Testa par ver se o atributo ie jï¿½ existe no sistema
  * =============================================================================
  */
 $sqlTeste2 = "SELECT * FROM {$tabela2} WHERE attribute_code = 'ie'";
@@ -308,7 +308,7 @@ $estadoTeste2 = $connectionTeste2->fetchAll($sqlTeste2);
 if(  @$estadoTeste2[0]['attribute_code'] != "ie"  ){
 
         /*==============================================================================
-         *  Adiciona o campo Inscrição Estadual no billing e shipping
+         *  Adiciona o campo Inscriï¿½ï¿½o Estadual no billing e shipping
          * =============================================================================
          */
          $this->addAttribute('customer_address', 'ie', array(
@@ -332,7 +332,7 @@ if(  @$estadoTeste2[0]['attribute_code'] != "ie"  ){
         ALTER TABLE  $tablequoteIE ADD `ie` VARCHAR(25) NULL
         ");
         /*==============================================================================
-         *  Adiciona o campo Inscrição Estadual no cadastro do usuario
+         *  Adiciona o campo Inscriï¿½ï¿½o Estadual no cadastro do usuario
          * =============================================================================
          */
         $this->addAttribute('customer', 'ie', array(
@@ -362,7 +362,7 @@ if(  @$estadoTeste2[0]['attribute_code'] != "ie"  ){
         ");
 };
 /*==============================================================================
- *  Testa par ver se o atributo cpfcnpj já existe no sistema
+ *  Testa par ver se o atributo cpfcnpj jï¿½ existe no sistema
  * =============================================================================
  */
 $sqlTeste2 = "SELECT * FROM {$tabela2} WHERE attribute_code = 'cpfcnpj'";
@@ -427,7 +427,7 @@ if(  @$estadoTeste2[0]['attribute_code'] != "cpfcnpj"  ){
 };
 
 /*==============================================================================
- *  Testa par ver se o atributo celular já existe no sistema
+ *  Testa par ver se o atributo celular jï¿½ existe no sistema
  * =============================================================================
  */
 $sqlTeste2 = "SELECT * FROM {$tabela2} WHERE attribute_code = 'celular'";
@@ -496,7 +496,7 @@ if(  @$estadoTeste2[0]['attribute_code'] != "celular"  ){
 
 
 /*==============================================================================
- *  Testa par ver se o atributo empresa já existe no sistema
+ *  Testa par ver se o atributo empresa jï¿½ existe no sistema
  * =============================================================================
  */
 $sqlTeste2 = "SELECT * FROM {$tabela2} WHERE attribute_code = 'empresa'";
@@ -568,7 +568,7 @@ if(  @$estadoTeste2[0]['attribute_code'] != "empresa"  ){
 
 
 /*==============================================================================
- *  Testa par ver se o atributo nomefantasia já existe no sistema
+ *  Testa par ver se o atributo nomefantasia jï¿½ existe no sistema
  * =============================================================================
  */
 $sqlTeste2 = "SELECT * FROM {$tabela2} WHERE attribute_code = 'nomefantasia'";
@@ -635,98 +635,6 @@ if(  @$estadoTeste2[0]['attribute_code'] != "nomefantasia"  ){
 
 };
 
-
-
-
-
-    /*Update do campo tipo pessoa para nao obrigatorio*/
-    $setup->removeAttribute('customer_address', 'tipopessoa');
-    $setup->removeAttribute('customer', 'tipopessoa');
-
-
-
-/*==============================================================================
- *
- *
- *  Adiciona os campos Tipo Pessoa, empresa e nomefantasia
- *
- *
- * =============================================================================
- */
-
-$tabela2 = $this->getTable('eav/attribute'); //pega o nome da tabela que contém os atributos no
-//Tabela onde é adionado os campos eav_attribute
-
-
-/*==============================================================================
- *  Testa par ver se o atributo tipopessoa já existe no sistema
- * =============================================================================
- */
-$sqlTeste2 = "SELECT * FROM {$tabela2} WHERE attribute_code = 'tipopessoa'";
-$connectionTeste2 = Mage::getSingleton('core/resource')->getConnection('core_read');
-$estadoTeste2 = $connectionTeste2->fetchAll($sqlTeste2);
-
-if(  @$estadoTeste2[0]['attribute_code'] != "tipopessoa"  ){
-
-        /*==============================================================================
-         *  Adiciona o campo Tipo Pessoa no billing e shipping
-         * =============================================================================
-         */
-         $this->addAttribute('customer_address', 'tipopessoa', array(
-              'type' => 'varchar', //int
-              'input' => 'text',  //select
-              'label' => 'Tipo Pessoa',
-              'global' => 1,
-              'visible' => 1,
-              'required' => 0,
-              'user_defined' => 1,
-              'visible_on_front' => 1
-              //,'source' =>  'onepagecheckout/entity_tipopessoa'
-          ));
-          Mage::getSingleton('eav/config')
-              ->getAttribute('customer_address', 'tipopessoa')
-              ->setData('used_in_forms', array('customer_register_address','customer_address_edit','adminhtml_customer_address'))
-              ->save();
-
-        $tablequoteTipopessoa = $this->getTable('sales/order_address');
-        Mage::log("TABELA IE ".$tablequoteTipopessoa);
-        $installer->run("
-        ALTER TABLE  $tablequoteTipopessoa ADD `tipopessoa` VARCHAR(25) NULL
-        ");
-
-        /*==============================================================================
-         *  Adiciona o campo Tipo Pessoa no cadastro do usuario
-         * =============================================================================
-         */
-        //$setup = Mage::getModel('customer/entity_setup', 'core_setup');
-        $this->addAttribute('customer', 'tipopessoa', array(
-        	'type' => 'varchar', //int
-        	'input' => 'text',  //select
-        	'label' => 'Tipo Pessoa',
-        	'global' => 1,
-        	'visible' => 1,
-        	'required' => 0,
-        	'user_defined' => 1,
-        	'default' => '',
-        	'visible_on_front' => 1
-            //,'source' =>	 'onepagecheckout/entity_tipopessoa'
-        ));
-
-        if (version_compare(Mage::getVersion(), '1.4.2', '>='))
-        {
-        	Mage::getSingleton('eav/config')
-        	->getAttribute('customer', 'tipopessoa')
-        	->setData('used_in_forms', array('adminhtml_customer','customer_account_create','customer_account_edit','checkout_register','adminhtml_customer_address','customer_address_edit','customer_register_address'))
-        	->save();
-        };
-
-        $tablequoteTipopessoa2 = $this->getTable('sales/quote');
-        Mage::log("TABELA ".$tablequoteTipopessoa2);
-        $installer->run("
-        ALTER TABLE  $tablequoteTipopessoa2 ADD `tipopessoa` VARCHAR(30) NULL
-        ");
-
-};
 
 
 
