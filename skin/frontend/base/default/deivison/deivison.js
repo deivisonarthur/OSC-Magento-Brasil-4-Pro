@@ -555,9 +555,9 @@
 $j(function($) {
       $j('input[name*="payment[method]"]').live('click', function() {
               checkout.update({
-                    'shipping-method': 1
-                    ,'review': 1
-                    ,'payment-method': 1
+                    'review': 1
+                    //,'shipping-method': 1
+                    //,'payment-method': 1
               });
 
              setTimeout(function(){
@@ -575,14 +575,14 @@ $j(function($) {
 
       $j('input[name*="shipping_method"]').live('click', function() {
               checkout.update({
-                    'shipping-method': 1
-                    ,'review': 1
+                    'review': 1
                     ,'payment-method': 1
+                    //'shipping-method': 1
               });
              setTimeout(function(){
                         checkout.update({
                             'review': 1,
-                            'payment-method': 1
+                            //'payment-method': 1
                         });
              }, 500);
 
