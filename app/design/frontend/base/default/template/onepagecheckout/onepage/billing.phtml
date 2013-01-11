@@ -1,9 +1,9 @@
 <?php
 /*=========================================================================================================================================================
  *
- *  PROJETO OSC MAGENTO BRASIL - VERS�O FINAL V3.0
+ *  PROJETO OSC MAGENTO BRASIL - VERSÃO FINAL V3.0
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *  O m�dulo One Step Checkout normatizado para a localiza��o brasileira.
+ *  O módulo One Step Checkout normatizado para a localização brasileira.
  *  site do projeto: http://onestepcheckout.com.br/
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
@@ -24,11 +24,11 @@
  *
  *
  *
- *  GOSTOU DO M�DULO?
+ *  GOSTOU DO MÓDULO?
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *  Se voc� gostou, se foi �til para voc�, se fez voc� economizar aquela grana pois estava prestes a pagar caro por aquele m�dulo pago, pois n�o achava uma
- *  solu��o gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doa��o de qualquer valor, n�o vou negar e vou ficar grato! voc�
- *  pode fazer isso visitando a p�gina do projeto em: http://onestepcheckout.com.br/
+ *  Se você gostou, se foi útil para você, se fez você economizar aquela grana pois estava prestes a pagar caro por aquele módulo pago, pois não achava uma
+ *  solução gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doação de qualquer valor, não vou negar e vou ficar grato! você
+ *  pode fazer isso visitando a página do projeto em: http://onestepcheckout.com.br/
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
 /*=========================================================================================================================================================
@@ -146,8 +146,8 @@ $has_addr	= $this->customerHasAddresses();
                           BLOCO CPF -----------------------------------------
                      -->
                       <?php
-            			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/general/taxvat');
-            			if ($cpfcnpj !== '1') : ?>
+            			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/outrasopcoes/cpfcnpjregistro');
+            			if ($cpfcnpj !== 'hidden') : ?>
                           <div class="short">
           	                <label <?php if ( $cpfcnpj  === 'required' ){ echo 'class="required"'; }?> >
           					<?php
@@ -163,20 +163,10 @@ $has_addr	= $this->customerHasAddresses();
                               </div>
                           </div>
                       <?php endif; ?>
-                      <?php if ($_taxvat->isEnabled() && $cpfcnpj === '1'): ?>
+                      <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
+                      <?php if ($_taxvat->isEnabled() && $cpfcnpj === 'hidden'): ?>
                           <div class="short">
-          	                <label <?php if ( $cpfcnpj  === 'required' ){ echo 'class="required"'; }?> >
-          					<?php
-                              if($cpfcnpj === 'required') {
-                                echo ' <sup>*</sup> ';
-                              }else{
-                                echo ' <sup>&nbsp;</sup> ';
-                              }
-                              ?>
-                            <?php echo $this->__('CPF') ?></label>
-                              <div class="input-box">
-                                  <input type="text" id="taxvat" name="billing[taxvat]"  value="<?php echo $this->htmlEscape($this->getCustomer()->getTaxvat()) ?>"  title="<?php echo $this->__('CPF'); ?>" class="input-text t1 Binputcpf validar_cpf <?php if($cpfcnpj === 'required'){ echo ' required-entry';} ?>" />
-                              </div>
+                                <?php echo $_taxvat->setTaxvat($this->getCustomer()->getTaxvat())->toHtml() ?>
                           </div>
                       <?php endif ?>
             </div> <!-- END -->
@@ -226,8 +216,8 @@ $has_addr	= $this->customerHasAddresses();
                           IF BLOCO CNPJ -----------------------------------------
                      -->
                       <?php
-            			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/general/taxvat');
-            			if ($cpfcnpj !== '1') : ?>
+            			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/outrasopcoes/cpfcnpjregistro');
+            			if ($cpfcnpj !== 'hidden') : ?>
                           <div class="short">
           	                <label <?php if ( $cpfcnpj  === 'required' ){ echo 'class="required"'; }?> >
           					<?php
@@ -246,20 +236,10 @@ $has_addr	= $this->customerHasAddresses();
                      <!--
                           IF BLOCO TAXVAT -----------------------------------------
                      -->
-                      <?php if ($_taxvat->isEnabled() && $cpfcnpj === '1'): ?>
+                      <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
+                      <?php if ($_taxvat->isEnabled() && $cpfcnpj === 'hidden'): ?>
                           <div class="short">
-          	                <label <?php if ( $cpfcnpj  === 'required' ){ echo 'class="required"'; }?> >
-          					<?php
-                              if($cpfcnpj === 'required') {
-                                echo ' <sup>*</sup> ';
-                              }else{
-                                echo ' <sup>&nbsp;</sup> ';
-                              }
-                              ?>
-                            <?php echo $this->__('CNPJ') ?></label>
-                              <div class="input-box">
-                                  <input type="text" id="taxvat" name="billing[taxvat]"  value="<?php echo $this->htmlEscape($this->getCustomer()->getTaxvat()) ?>"  title="<?php echo $this->__('CNPJ'); ?>" class="input-text t1 Binputcpf validar_cpf <?php if($cpfcnpj === 'required'){ echo ' required-entry';} ?>" />
-                              </div>
+                                <?php echo $_taxvat->setTaxvat($this->getCustomer()->getTaxvat())->toHtml() ?>
                           </div>
                       <?php endif ?>
                      <!--
@@ -294,7 +274,7 @@ $has_addr	= $this->customerHasAddresses();
 
 
            <!--
-                BLOCO RAZ�O SOCIAL E NOME FANTASIA -----------------------------------------
+                BLOCO RAZÃO SOCIAL E NOME FANTASIA -----------------------------------------
            -->
             <div class="two_fields boxpj" style="display: none">  <!-- START -->
                      <!--
@@ -352,7 +332,7 @@ $has_addr	= $this->customerHasAddresses();
                 <input type="hidden" name="billing[tipopessoa]" value="<?php echo $this->htmlEscape($this->getCustomer()->getTipopessoa()) ?>"/>
                 <input type="hidden" name="billing[rg]" value="<?php echo $this->htmlEscape($this->getCustomer()->getRg()) ?>"/>
                 <input type="hidden" name="billing[cpfcnpj]" value="<?php echo $this->htmlEscape($this->getCustomer()->getCpfcnpj()) ?>"/>
-                <!--<input type="hidden" name="billing[taxvat]" value="<?php echo $this->htmlEscape($this->getCustomer()->getTaxvat()) ?>"/> -->
+                <input type="hidden" name="billing[taxvat]" value="<?php echo $this->htmlEscape($this->getCustomer()->getTaxvat()) ?>"/>
                 <input type="hidden" name="billing[ie]" value="<?php echo $this->htmlEscape($this->getCustomer()->getIe()) ?>"/>
                 <input type="hidden" name="billing[empresa]" value="<?php echo $this->htmlEscape($this->getCustomer()->getEmpresa()) ?>"/>
                 <input type="hidden" name="billing[nomefantasia]" value="<?php echo $this->htmlEscape($this->getCustomer()->getNomefantasia()) ?>"/>
@@ -365,7 +345,7 @@ $has_addr	= $this->customerHasAddresses();
 
 
            <!--
-                BLOCO RAZ�O SOCIAL E NOME FANTASIA -----------------------------------------
+                BLOCO RAZÃO SOCIAL E NOME FANTASIA -----------------------------------------
            -->
 			<?php
 			$phone_r= Mage::getStoreConfig('onepagecheckout/address_form/phone');
@@ -444,7 +424,7 @@ $has_addr	= $this->customerHasAddresses();
 
 
            <!--
-                BLOCO DADOS DO ENDERE�O -----------------------------------------
+                BLOCO DADOS DO ENDEREÇO -----------------------------------------
            -->
            <!--
                 IF BLOCO CEP -----------------------------------------
@@ -472,7 +452,7 @@ $has_addr	= $this->customerHasAddresses();
 			<?php endif; ?>
             <div class="clr"></div>
            <!--
-                IF BLOCO ENDERE�O -----------------------------------------
+                IF BLOCO ENDEREÇO -----------------------------------------
            -->
             <?php
 			$endereco = Mage::getStoreConfig('onepagecheckout/address_form/address');
@@ -799,7 +779,7 @@ $has_addr	= $this->customerHasAddresses();
             if( existe != ''){
                 /*BILLING*/
                 $j('input[name*="[taxvat-old]"]').attr('name', 'billing[taxvat]');     /*CNPJ OK*/
-                $j('input[name*="[taxvat]"]:eq(1)').attr('name', 'taxvat-old');              /*CPF NULL*/
+                $j('input[name*="[taxvat]"]:eq(1)').attr('name', 'NULL');              /*CPF NULL*/
 
                 /*LIMPA CAMPOS*/
                 $j('input[name*="[taxvat]"]').attr('class', 'validar_cpfcnpj input-text');
@@ -813,7 +793,7 @@ $has_addr	= $this->customerHasAddresses();
             $j('.boxpj').hide();
             $j('.boxpf').show();
 
-            /*Exibe ou oculta o entregar em outro endere�o conforme a selecao do tipo pessoa*/
+            /*Exibe ou oculta o entregar em outro endereço conforme a selecao do tipo pessoa*/
             $j('li.options').find("label:contains('Entregar')").css('visibility', 'visible');
             $j('input[name*="[same_as_billing]"]').css('visibility', 'visible');
 
@@ -824,7 +804,7 @@ $has_addr	= $this->customerHasAddresses();
             if( existe != ''){
                 /*BILLING*/
                 $j('input[name*="[taxvat-old]"]').attr('name', 'billing[taxvat]');     /*CNPJ OK*/
-                $j('input[name*="[taxvat]"]:eq(0)').attr('name', 'taxvat-old');             /*CPF NULL*/
+                $j('input[name*="[taxvat]"]:eq(0)').attr('name', 'NULL');             /*CPF NULL*/
 
                 /*ADD CLASS NO TAXVAT*/
                 $j('input[name*="[taxvat]"]').attr('class', 'validar_cpfcnpj input-text');
@@ -838,7 +818,7 @@ $has_addr	= $this->customerHasAddresses();
             $j('.boxpj').show();
             $j('.boxpf').hide();
 
-            /*Exibe ou oculta o entregar em outro endere�o conforme a selecao do tipo pessoa*/
+            /*Exibe ou oculta o entregar em outro endereço conforme a selecao do tipo pessoa*/
             $j('li.options').find("label:contains('Entregar')").css('visibility', 'hidden');
             $j('input[name*="[same_as_billing]"]').css('visibility', 'hidden');
         }
