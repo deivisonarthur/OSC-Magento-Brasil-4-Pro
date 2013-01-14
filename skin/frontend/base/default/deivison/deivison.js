@@ -1,8 +1,8 @@
 /*=========================================================================================================================================================
  *
- *  PROJETO OSC MAGENTO BRASIL - VERSÃO FINAL V3.0
+ *  PROJETO OSC MAGENTO BRASIL - VERSï¿½O FINAL V3.0
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *  O módulo One Step Checkout normatizado para a localização brasileira.
+ *  O mï¿½dulo One Step Checkout normatizado para a localizaï¿½ï¿½o brasileira.
  *  site do projeto: http://onestepcheckout.com.br/
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
@@ -23,11 +23,11 @@
  *
  *
  *
- *  GOSTOU DO MÓDULO?
+ *  GOSTOU DO Mï¿½DULO?
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *  Se você gostou, se foi útil para você, se fez você economizar aquela grana pois estava prestes a pagar caro por aquele módulo pago, pois não achava uma
- *  solução gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doação de qualquer valor, não vou negar e vou ficar grato! você
- *  pode fazer isso visitando a página do projeto em: http://onestepcheckout.com.br/
+ *  Se vocï¿½ gostou, se foi ï¿½til para vocï¿½, se fez vocï¿½ economizar aquela grana pois estava prestes a pagar caro por aquele mï¿½dulo pago, pois nï¿½o achava uma
+ *  soluï¿½ï¿½o gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doaï¿½ï¿½o de qualquer valor, nï¿½o vou negar e vou ficar grato! vocï¿½
+ *  pode fazer isso visitando a pï¿½gina do projeto em: http://onestepcheckout.com.br/
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
 /*=========================================================================================================================================================
@@ -103,7 +103,7 @@
                     $j('.boxpj').hide();
                     $j('.boxpf').show();
 
-                    /*Exibe ou oculta o entregar em outro endereço conforme a selecao do tipo pessoa*/
+                    /*Exibe ou oculta o entregar em outro endereï¿½o conforme a selecao do tipo pessoa*/
                     $j('li.options').find("label:contains('Entregar')").css('visibility', 'visible');
                     $j('input[name*="[same_as_billing]"]').css('visibility', 'visible');
 
@@ -147,7 +147,7 @@
                     $j('.boxpj').show();
                     $j('.boxpf').hide();
 
-                    /*Exibe ou oculta o entregar em outro endereço conforme a selecao do tipo pessoa*/
+                    /*Exibe ou oculta o entregar em outro endereï¿½o conforme a selecao do tipo pessoa*/
                     $j('li.options').find("label:contains('Entregar')").css('visibility', 'hidden');
                     $j('input[name*="[same_as_billing]"]').css('visibility', 'hidden');
                 }
@@ -194,13 +194,13 @@
             });
 
 
-            //Ao se coloca o "-" no CEP não irá calcular o frete caso use o módulo Matrix Rates, pois ele não trabalha com o "-"
-            /*Essa opção é caso queira que toda vez ao se entrar no campo ele limpe-o*/
+            //Ao se coloca o "-" no CEP nï¿½o irï¿½ calcular o frete caso use o mï¿½dulo Matrix Rates, pois ele nï¿½o trabalha com o "-"
+            /*Essa opï¿½ï¿½o ï¿½ caso queira que toda vez ao se entrar no campo ele limpe-o*/
             $j('input[class*="tracoAtivo"]').focus(function(){
               $j(this).val('');
             });
 
-             /*Script do traço do cep*/
+             /*Script do traï¿½o do cep*/
              /*   mexer
             $j('input[class*="tracoAtivo"]').keydown( function(e){
                   $j(this).attr('maxlength','9');
@@ -232,7 +232,7 @@
                     if (length == 3)
                       this.value += ")";
                     /*
-                    Testa para ver se o ddd começa com 11 e coloca maxlength para 14
+                    Testa para ver se o ddd comeï¿½a com 11 e coloca maxlength para 14
                             exemplo: (11)95345-1234 que antes era assim (11)5345-1234
                     */
                     if(/(\(11\)9(5[0-9]|6[0-9]|7[01234569]|8[0-9]|9[0-9])).+/i.test(this.value)){
@@ -261,7 +261,7 @@
                     if (length == 3)
                       this.value += ")";
                     /*
-                    Testa para ver se o ddd começa com 11 e coloca maxlength para 14
+                    Testa para ver se o ddd comeï¿½a com 11 e coloca maxlength para 14
                             exemplo: (11)95345-1234 que antes era assim (11)5345-1234
                     */
                     if(/(\(11\)9(5[0-9]|6[0-9]|7[01234569]|8[0-9]|9[0-9])).+/i.test(this.value)){
@@ -289,7 +289,7 @@
                     if (length == 3)
                       this.value += ")";
                     /*
-                    Testa para ver se o ddd começa com 11 e coloca maxlength para 14
+                    Testa para ver se o ddd comeï¿½a com 11 e coloca maxlength para 14
                             exemplo: (11)95345-1234 que antes era assim (11)5345-1234
                     */
                     if(/(\(11\)9(5[0-9]|6[0-9]|7[01234569]|8[0-9]|9[0-9])).+/i.test(this.value)){
@@ -310,33 +310,33 @@
 
                 //para testar cnpj: 78.425.986/0036-15 ou 78425986003615
 
-                //Remove tudo o que não é dígito
+                //Remove tudo o que nï¿½o ï¿½ dï¿½gito
                 v = v.replace(/\D/g,"");
 
                 if (v.length <= 11) { //CPF
 
-                    //Coloca um ponto entre o terceiro e o quarto dígitos
+                    //Coloca um ponto entre o terceiro e o quarto dï¿½gitos
                     v=v.replace(/(\d{3})(\d)/,"$1.$2");
 
-                    //Coloca um ponto entre o terceiro e o quarto dígitos
-                    //de novo (para o segundo bloco de números)
+                    //Coloca um ponto entre o terceiro e o quarto dï¿½gitos
+                    //de novo (para o segundo bloco de nï¿½meros)
                     v=v.replace(/(\d{3})(\d)/,"$1.$2");
 
-                    //Coloca um hífen entre o terceiro e o quarto dígitos
+                    //Coloca um hï¿½fen entre o terceiro e o quarto dï¿½gitos
                     v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2");
 
                 } else { //CNPJ
 
-                    //Coloca ponto entre o segundo e o terceiro dígitos
+                    //Coloca ponto entre o segundo e o terceiro dï¿½gitos
                     v=v.replace(/^(\d{2})(\d)/,"$1.$2");
 
-                    //Coloca ponto entre o quinto e o sexto dígitos
+                    //Coloca ponto entre o quinto e o sexto dï¿½gitos
                     v=v.replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3");
 
-                    //Coloca uma barra entre o oitavo e o nono dígitos
+                    //Coloca uma barra entre o oitavo e o nono dï¿½gitos
                     v=v.replace(/\.(\d{3})(\d)/,".$1/$2");
 
-                    //Coloca um hífen depois do bloco de quatro dígitos
+                    //Coloca um hï¿½fen depois do bloco de quatro dï¿½gitos
                     v=v.replace(/(\d{4})(\d)/,"$1-$2");
                 }
 
@@ -351,33 +351,33 @@
 
                 //para testar cnpj: 78.425.986/0036-15 ou 78425986003615
 
-                //Remove tudo o que não é dígito
+                //Remove tudo o que nï¿½o ï¿½ dï¿½gito
                 v = v.replace(/\D/g,"");
 
                 if (v.length <= 11) { //CPF
 
-                    //Coloca um ponto entre o terceiro e o quarto dígitos
+                    //Coloca um ponto entre o terceiro e o quarto dï¿½gitos
                     v=v.replace(/(\d{3})(\d)/,"$1.$2");
 
-                    //Coloca um ponto entre o terceiro e o quarto dígitos
-                    //de novo (para o segundo bloco de números)
+                    //Coloca um ponto entre o terceiro e o quarto dï¿½gitos
+                    //de novo (para o segundo bloco de nï¿½meros)
                     v=v.replace(/(\d{3})(\d)/,"$1.$2");
 
-                    //Coloca um hífen entre o terceiro e o quarto dígitos
+                    //Coloca um hï¿½fen entre o terceiro e o quarto dï¿½gitos
                     v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2");
 
                 } else { //CNPJ
 
-                    //Coloca ponto entre o segundo e o terceiro dígitos
+                    //Coloca ponto entre o segundo e o terceiro dï¿½gitos
                     v=v.replace(/^(\d{2})(\d)/,"$1.$2");
 
-                    //Coloca ponto entre o quinto e o sexto dígitos
+                    //Coloca ponto entre o quinto e o sexto dï¿½gitos
                     v=v.replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3");
 
-                    //Coloca uma barra entre o oitavo e o nono dígitos
+                    //Coloca uma barra entre o oitavo e o nono dï¿½gitos
                     v=v.replace(/\.(\d{3})(\d)/,".$1/$2");
 
-                    //Coloca um hífen depois do bloco de quatro dígitos
+                    //Coloca um hï¿½fen depois do bloco de quatro dï¿½gitos
                     v=v.replace(/(\d{4})(\d)/,"$1-$2");
                 }
 
@@ -462,7 +462,7 @@
         /********************* Valida CPF e CNPJ *********************/
 
     	// Adicionar classe de validacao de cpf e cnpj ao Taxvat
-    	//$j('#billing:taxvat"]').addClassName('validar_cpf'); //removido e colocado na mão
+    	//$j('#billing:taxvat"]').addClassName('validar_cpf'); //removido e colocado na mï¿½o
 
         function validaCPF(cpf,pType){
         	var cpf_filtrado = "", valor_1 = " ", valor_2 = " ", ch = "";
@@ -541,13 +541,13 @@
 
 
 /*  deivison 02
-    FUNÇÃO QUE EXECUTA PASSO A PASSO DE ATUALIZAÇÃO DOS CAMPOS PAYMENTS E REVIEW
+    FUNï¿½ï¿½O QUE EXECUTA PASSO A PASSO DE ATUALIZAï¿½ï¿½O DOS CAMPOS PAYMENTS E REVIEW
     -------------------------------------------------------------------------------------------------------------------------------
-    Essa função foi feita para atualização dos valores, caso haja desconto para pagamentos específicos como 10% pagamento no boleto
+    Essa funï¿½ï¿½o foi feita para atualizaï¿½ï¿½o dos valores, caso haja desconto para pagamentos especï¿½ficos como 10% pagamento no boleto
     -------------------------------------------------------------------------------------------------------------------------------
-    Métodos de atualiação
+    Mï¿½todos de atualiaï¿½ï¿½o
     'payment-method': 1,    <- Atualiza os meios de pagamentos
-    'shipping-method': 1,   <- Atualiza os métodos de envio
+    'shipping-method': 1,   <- Atualiza os mï¿½todos de envio
     'review': 1             <- Atualiza o resumo da compra
 */
 
@@ -555,9 +555,9 @@
 $j(function($) {
       $j('input[name*="payment[method]"]').live('click', function() {
               checkout.update({
-                    'review': 1
+                    // 'review': 1
                     //,'shipping-method': 1
-                    //,'payment-method': 1
+                    'payment-method': 1
               });
 
              setTimeout(function(){
