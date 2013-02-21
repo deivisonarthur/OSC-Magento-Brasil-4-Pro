@@ -8,7 +8,7 @@
 
     <?php
     $guest_checkout1 = Mage::getStoreConfig('onepagecheckout/general/guest_checkout1');
-    if ($guest_checkout1 === '1') : ?>
+    if ($guest_checkout1 == 1) : ?>
     <p class="onepagecheckout_loginarea">
         <a href="javascript:void(0)" class="onepagecheckout_loginlink" onclick='open_login();'>
             <?php echo $this->__('Already registered? Click here to login') ?>
@@ -18,14 +18,14 @@
 
 
     <?php
-    //$guest_checkout2 = Mage::getStoreConfig('onepagecheckout/general/guest_checkout2');    
-    //if ($guest_checkout2 === '1') : ?>
+    $guest_checkout2 = Mage::getStoreConfig('onepagecheckout/general/guest_checkout2');    
+    if ($guest_checkout2 === '1') : ?>
     <p class="onepagecheckout_loginarea">
         <a href="<?=Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>customer/account/login/" class="onepagecheckout_loginlink" >
             <?php echo $this->__('Already registered? Click here to login') ?>
         </a>
     </p>
-    <?php //endif; ?>
+    <?php endif; ?>
 
 
 
