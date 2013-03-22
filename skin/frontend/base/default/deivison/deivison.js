@@ -35,7 +35,6 @@
 
 
 
-alert("teste 3");
 
 
         $j(document).ready(function(){
