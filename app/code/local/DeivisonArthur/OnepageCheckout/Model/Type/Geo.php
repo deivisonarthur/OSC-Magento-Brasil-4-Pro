@@ -386,7 +386,11 @@ class DeivisonArthur_OnepageCheckout_Model_Type_Geo
             }
         }
         else
-        {
+        {   
+            //contribuicao https://github.com/deivisonarthur/OSC-Magento-Brasil-4-Pro/issues/4#issuecomment-14512589
+            if (!empty($data['year']) && !empty($data['month']) && !empty($data['day'])) {
+                $data['dob'] = "{$data['year']}-{$data['month']}-{$data['day']}";
+            }
             unset($data['address_id']);
             $address->addData($data);
         }

@@ -105,9 +105,14 @@ $has_addr	= $this->customerHasAddresses();
                                       <label style="padding-left: 15px" for="persona_pj" <?php if ( $tipopessoa  === 'required' ){ echo 'class="required"'; }?>>Pessoa Jur&iacute;dica<input type="radio" style="margin-left: 5px" name="billing[tipopessoa]" id="persona_pj" value="Juridica" title="Pessoa Juridica" <?php if ( $tipopessoa  === 'required' ){ echo 'class="required"'; }?> ></label>
                               </li>
 
+
                               <script type="text/javascript">
                               //<![CDATA[
-                                      $j('input[value*="<?php echo $this->htmlEscape($this->getCustomer()->getTipopessoa()) ?>"]').attr('checked', true);
+                                      <?php 
+                                        $tipoPessoa = $this->htmlEscape($this->getCustomer()->getTipopessoa()); 
+                                        if (!$tipoPessoa) $tipoPessoa = 'Fisica';  //ccd: conserta default errado no IE 
+                                      ?>
+                                      $j('input[value*="<?php echo $tipoPessoa;?>"]').attr('checked', true);
                               //]]>
                               </script>
 
@@ -128,17 +133,18 @@ $has_addr	= $this->customerHasAddresses();
             			$identidade = Mage::getStoreConfig('onepagecheckout/outrasopcoes/rgiregistro');
             			if ($identidade !== 'hidden') : ?>
                           <div class="short">
-          	                <label <?php if ( $identidade  === 'required' ){ echo 'class="required"'; }?> >
-          					<?php
+          	                <label <?php if ( $identidade  === 'required' ){ echo 'class="required"'; }?> >          					         
+                            <?php echo $this->__('Identidade') ?>
+                            <?php
                               if($identidade === 'required') {
                                 echo ' <sup>*</sup> ';
                               }else{
                                 echo ' <sup>&nbsp;</sup> ';
                               }
                               ?>
-                            <?php echo $this->__('Identidade') ?></label>
+                          </label>
                               <div class="data_area">
-                                  <input type="text" name="rg" id="billing[rg]"  value="<?php echo $this->htmlEscape($this->getCustomer()->getRg()) ?>" title="<?php echo $this->__('Identidade'); ?>" class="input-text t1 validate-number <?php if($identidade === 'required'){ echo ' required-entry';} ?>" />
+                                  <input type="text" name="billing[rg]" id="rg"  value="<?php echo $this->htmlEscape($this->getCustomer()->getRg()) ?>" title="<?php echo $this->__('Identidade'); ?>" class="input-text t1 validate-number <?php if($identidade === 'required'){ echo ' required-entry';} ?>" />
                               </div>
                           </div>
                       <?php endif; ?>
@@ -149,15 +155,16 @@ $has_addr	= $this->customerHasAddresses();
             			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/outrasopcoes/cpfcnpjregistro');
             			if ($cpfcnpj !== 'hidden') : ?>
                           <div class="short">
-          	                <label <?php if ( $cpfcnpj  === 'required' ){ echo 'class="required"'; }?> >
-          					<?php
+          	                <label <?php if ( $cpfcnpj  === 'required' ){ echo 'class="required"'; }?> >          				      	
+                            <?php echo $this->__('CPF') ?>
+                            <?php
                               if($cpfcnpj === 'required') {
                                 echo ' <sup>*</sup> ';
                               }else{
                                 echo ' <sup>&nbsp;</sup> ';
                               }
                               ?>
-                            <?php echo $this->__('CPF') ?></label>
+                            </label>
                               <div class="input-box">
                                   <input type="text" id="cpfcnpj" name="billing[cpfcnpj]"  value="<?php echo $this->htmlEscape($this->getCustomer()->getCpfcnpj()) ?>"  title="<?php echo $this->__('CPF'); ?>" class="input-text t1 Binputcpf validar_cpf <?php if($cpfcnpj === 'required'){ echo ' required-entry';} ?>" />
                               </div>
@@ -220,14 +227,16 @@ $has_addr	= $this->customerHasAddresses();
             			if ($cpfcnpj !== 'hidden') : ?>
                           <div class="short">
           	                <label <?php if ( $cpfcnpj  === 'required' ){ echo 'class="required"'; }?> >
-          					<?php
+          					
+                            <?php echo $this->__('CNPJ') ?>
+                            <?php
                               if($cpfcnpj === 'required') {
                                 echo ' <sup>*</sup> ';
                               }else{
                                 echo ' <sup>&nbsp;</sup> ';
                               }
                               ?>
-                            <?php echo $this->__('CNPJ') ?></label>
+                          </label>
                               <div class="input-box">
                                   <input type="text" style="width: 109px !important" id="cpfcnpj" name="billing[cpfcnpj]"  value="<?php echo $this->htmlEscape($this->getCustomer()->getCpfcnpj()) ?>"  title="<?php echo $this->__('CNPJ'); ?>" class="input-text t1 Binputcnpj validar_cpf2 <?php if($cpfcnpj === 'required'){ echo ' required-entry';} ?>" />
                               </div>
@@ -249,15 +258,16 @@ $has_addr	= $this->customerHasAddresses();
         			$ie = Mage::getStoreConfig('onepagecheckout/outrasopcoes/ieregistro');
         			if ($ie !== 'hidden') : ?>
                         <div class="short">
-        	                <label <?php if ( $ie  === 'required' ){ echo 'class="required"'; }?> >
-        					<?php
+        	                <label <?php if ( $ie  === 'required' ){ echo 'class="required"'; }?> >        					
+                            <?php echo $this->__('IE') ?>
+                            <?php
                             if($ie === 'required') {
                               echo ' <sup>*</sup> ';
                             }else{
                               echo ' <sup>&nbsp;</sup> ';
                             }
                             ?>
-                            <?php echo $this->__('IE') ?></label>
+                          </label>
                             <div class="input-box">
                                 <input type="text" style="width: 115px !important" for="isento" name="billing[ie]" id="ie"  value="<?php echo $this->htmlEscape($this->getCustomer()->getIe()) ?>"   title="<?php echo $this->__('IE (Inscri&ccedil;&atilde;o Estadual)'); ?>" class="input-text t1 validate-alphanum <?php if($ie === 'required'){ echo ' required-entry';} ?>" />
                             </div>
@@ -285,14 +295,16 @@ $has_addr	= $this->customerHasAddresses();
           			if ($company !== 'hidden') : ?>
                           <div class="short">
           	                <label <?php if ( $company  === 'required' ){ echo 'class="required"'; }?> >
-          					<?php
+          					
+                              <?php echo $this->__('Raz&atilde;o Social') ?>
+                            <?php
                               if($company === 'required') {
                                 echo ' <sup>*</sup> ';
                               }else{
                                 echo ' <sup>&nbsp;</sup> ';
                               }
                               ?>
-                              <?php echo $this->__('Raz&atilde;o Social') ?></label>
+                            </label>
                               <div class="input-box">
                                   <input type="text" style="width: 109px !important" name="billing[empresa]" id="empresa"  value="<?php echo $this->htmlEscape($this->getCustomer()->getEmpresa()) ?>"  title="<?php echo $this->__('Raz&atilde;o Social'); ?>" class="input-text t1 <?php if($company === 'required'){ echo ' required-entry';} ?>" />
                               </div>
@@ -305,15 +317,16 @@ $has_addr	= $this->customerHasAddresses();
           			$company2 = Mage::getStoreConfig('onepagecheckout/outrasopcoes/nomefantasiaregistro');
           			if ($company2 !== 'hidden') : ?>
                           <div class="short">
-          	                <label <?php if ( $company2  === 'required' ){ echo 'class="required"'; }?> >
-          					<?php
+          	                <label <?php if ( $company2  === 'required' ){ echo 'class="required"'; }?> >          				
+                              <?php echo $this->__('Nome Fantasia') ?>
+                                <?php
                               if($company2 === 'required') {
                                 echo ' <sup>*</sup> ';
                               }else{
                                 echo ' <sup>&nbsp;</sup> ';
                               }
                               ?>
-                              <?php echo $this->__('Nome Fantasia') ?></label>
+                            </label>
                               <div class="input-box">
                                   <input type="text" style="width: 115px !important" name="billing[nomefantasia]" id="nomefantasia"  value="<?php echo $this->htmlEscape($this->getCustomer()->getNomefantasia()) ?>"  title="<?php echo $this->__('Nome Fantasia'); ?>" class="input-text t1 <?php if($company2 === 'required'){ echo ' required-entry';} ?>" />
                               </div>
@@ -382,14 +395,15 @@ $has_addr	= $this->customerHasAddresses();
             				<div class="short">
             					<label for="billing:fax"<?php if($fax_r === 'required') {echo ' class="required" ';}?>>
             						<?php echo $this->__('Fax') ?>
-            					</label>
-            					<?php
+                          <?php
                                 if($fax_r === 'required') {
                                   echo ' <sup>*</sup> ';
                                 }else{
                                   echo ' <sup>&nbsp;</sup> ';
                                 }
                                 ?>
+            					</label>
+            				
             					<div class="data_area">
             						<input type="text" name="billing[fax]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getFax()) ?>" title="<?php echo $this->__('Fax') ?>" class="t1 required-entry" id="billing:fax" />
             					</div>
