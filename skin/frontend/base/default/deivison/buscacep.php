@@ -91,7 +91,9 @@ $dados =
 ///////////////////////////////////////////////////
   $dados['cidade/uf'] = explode('/',$dados['cidade/uf']);
   $dados['cidade'] = trim($dados['cidade/uf'][0]);
-  $dados['uf'] = trim($dados['cidade/uf'][1]);
+  if (isset($dados['cidade/uf'][1])) {
+    $dados['uf'] = trim($dados['cidade/uf'][1]);
+  }
   unset($dados['cidade/uf']);
 
 ///////////////////////////////////////////////////
@@ -107,7 +109,7 @@ $dados =
 //var_dump($dados);   //para testar
 ///////////////////////////////////////////////////
 
-if ( isset($dados) ) {
+if ( isset($dados) && isset($dados['uf']) ) {
 
 ///////////////////////////////////////////////////
 //MONTA SWITC PARA SELECIONAR NO COMBO DO MAGENTO
