@@ -47,6 +47,15 @@ jQuery(document).ready(function($j) {
             $j('input[name*="month"]').attr('maxlength','2');
             $j('input[name*="year"]').attr('maxlength','4');
             $j('input[name*="postcode"]').attr('maxlength','8');
+			
+			if($j('.account-create').length) {
+                $j('.account-create .boxpf #cpfcnpj').attr('name', 'cpfcnpj').removeAttr('disabled');
+                $j('.account-create .boxpj #cpfcnpj').attr('name', 'cpfcnpj-disabled').attr('disabled', 'disabled');
+            }
+            if($j('#onepagecheckout_orderform').length) {
+                $j('#onepagecheckout_orderform .boxpf #cpfcnpj').attr('name', 'cpfcnpj').removeAttr('disabled');
+                $j('#onepagecheckout_orderform .boxpj #cpfcnpj').attr('name', 'cpfcnpj-disabled').attr('disabled', 'disabled');
+            }
 
 /*===================================================== Click ===========================================================*/
             /*Roda o clique para selecionar o tipo pessoa*/
@@ -83,11 +92,12 @@ jQuery(document).ready(function($j) {
                         $j('input[name*="taxvat"]').attr('class', 'validar_cpfcnpj input-text');
                     }else{
                         /*CADASTRO*/
-                        $j('.inputcnpj').attr('disabled', 'disabled');
-                        $j('.inputcpf').attr('name', 'cpfcnpj');
+                        $j('.account-create .boxpf #cpfcnpj').attr('name', 'cpfcnpj').removeAttr('disabled');
+                        $j('.account-create .boxpj #cpfcnpj').attr('name', 'cpfcnpj-disabled').attr('disabled', 'disabled');
 
                         /*BILLING*/
-                        $j('.Binputcnpj').attr('disabled', 'disabled');
+                        $j('#onepagecheckout_orderform .boxpf #cpfcnpj').attr('name', 'cpfcnpj').removeAttr('disabled');
+                        $j('#onepagecheckout_orderform .boxpj #cpfcnpj').attr('name', 'cpfcnpj-disabled').attr('disabled', 'disabled');
                    
                         /*LIMPA CAMPOS*/
                         //$j('input[name="cpfcnpj"]').val('');
@@ -126,11 +136,12 @@ jQuery(document).ready(function($j) {
                         $j('input[name*="taxvat"]').attr('class', 'validar_cpfcnpj input-text');
                     }else{
                         /*CADASTRO*/
-                        $j('.inputcnpj').attr('name', 'cpfcnpj');
-                        $j('.inputcpf').attr('disabled', 'disabled');
+                        $j('.account-create .boxpj #cpfcnpj').attr('name', 'cpfcnpj').removeAttr('disabled');
+                        $j('.account-create .boxpf #cpfcnpj').attr('name', 'cpfcnpj-disabled').attr('disabled', 'disabled');
 
                         /*BILLING*/
-                        $j('.Binputcpf').attr('disabled', 'disabled');
+                        $j('#onepagecheckout_orderform .boxpj #cpfcnpj').attr('name', 'cpfcnpj').removeAttr('disabled');
+                        $j('#onepagecheckout_orderform .boxpf #cpfcnpj').attr('name', 'cpfcnpj-disabled').attr('disabled', 'disabled');
 
                         /*LIMPA CAMPOS*/
                         //$j('input[name="cpfcnpj"]').val('');
