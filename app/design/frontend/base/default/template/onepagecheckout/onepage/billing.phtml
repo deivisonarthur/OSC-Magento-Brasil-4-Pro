@@ -152,30 +152,25 @@ $has_addr	= $this->customerHasAddresses();
                           BLOCO CPF -----------------------------------------
                      -->
                       <?php
-            			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/outrasopcoes/cpfcnpjregistro');
-            			if ($cpfcnpj !== 'hidden') : ?>
-                          <div class="short">
+            			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/outrasopcoes/taxvat');
+                        if ($cpfcnpj) : ?>
+                        <div class="short">
           	                <label <?php if ( $cpfcnpj  === 'required' ){ echo 'class="required"'; }?> >          				      	
                             <?php echo $this->__('CPF') ?>
-                            <?php
-                              if($cpfcnpj === 'required') {
-                                echo ' <sup>*</sup> ';
-                              }else{
-                                echo ' <sup>&nbsp;</sup> ';
-                              }
-                              ?>
+                            <?php echo ' <sup>*</sup> '; ?>
                             </label>
-                              <div class="input-box">
-                                  <input type="text" id="cpfcnpj" name="billing[cpfcnpj]"  value="<?php echo $this->htmlEscape($this->getCustomer()->getCpfcnpj()) ?>"  title="<?php echo $this->__('CPF'); ?>" class="input-text t1 Binputcpf validar_cpf <?php if($cpfcnpj === 'required'){ echo ' required-entry';} ?>" />
-                              </div>
-                          </div>
-                      <?php endif; ?>
-                      <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
-                      <?php if ($_taxvat->isEnabled() && $cpfcnpj === 'hidden'): ?>
+                            <div class="input-box">
+                                <input type="text" id="cpfcnpj" name="cpfcnpj" value="<?php echo $this->htmlEscape($this->getCustomer()->getCpfcnpj()) ?>"  title="<?php echo $this->__('CPF'); ?>" class="input-text t1 Binputcpf validar_cpf <?php if($cpfcnpj === 'required'){ echo ' required-entry';} ?>" />
+                            </div>
+                        </div>
+                      <?php else: ?>
+                          <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
+                          <?php if ($_taxvat->isEnabled()): ?>
                           <div class="short">
                                 <?php echo $_taxvat->setTaxvat($this->getCustomer()->getTaxvat())->toHtml() ?>
                           </div>
-                      <?php endif ?>
+                          <?php endif; ?>
+                      <?php endif; ?>
             </div> <!-- END -->
 
 
@@ -223,34 +218,26 @@ $has_addr	= $this->customerHasAddresses();
                           IF BLOCO CNPJ -----------------------------------------
                      -->
                       <?php
-            			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/outrasopcoes/cpfcnpjregistro');
-            			if ($cpfcnpj !== 'hidden') : ?>
-                          <div class="short">
-          	                <label <?php if ( $cpfcnpj  === 'required' ){ echo 'class="required"'; }?> >
-          					
-                            <?php echo $this->__('CNPJ') ?>
-                            <?php
-                              if($cpfcnpj === 'required') {
-                                echo ' <sup>*</sup> ';
-                              }else{
-                                echo ' <sup>&nbsp;</sup> ';
-                              }
-                              ?>
-                          </label>
-                              <div class="input-box">
-                                  <input type="text" style="width: 109px !important" id="cpfcnpj" name="billing[cpfcnpj]"  value="<?php echo $this->htmlEscape($this->getCustomer()->getCpfcnpj()) ?>"  title="<?php echo $this->__('CNPJ'); ?>" class="input-text t1 Binputcnpj validar_cpf2 <?php if($cpfcnpj === 'required'){ echo ' required-entry';} ?>" />
-                              </div>
-                          </div>
-                      <?php endif; ?>
-                     <!--
-                          IF BLOCO TAXVAT -----------------------------------------
-                     -->
-                      <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
-                      <?php if ($_taxvat->isEnabled() && $cpfcnpj === 'hidden'): ?>
+            			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/outrasopcoes/taxvat');
+            			if ($cpfcnpj) : ?>
+                        <div class="short">
+                            <label class="required">          				      	
+                                <?php echo $this->__('CNPJ') ?>
+                                <?php echo ' <sup>*</sup> '; ?>
+                            </label>
+                            <div class="input-box">
+                                  <input type="text" style="width: 109px !important" id="cpfcnpj" name="cpfcnpj"  value="<?php echo $this->htmlEscape($this->getCustomer()->getCpfcnpj()) ?>"  title="<?php echo $this->__('CNPJ'); ?>" class="input-text t1 Binputcnpj validar_cpf2 <?php if($cpfcnpj === 'required'){ echo ' required-entry';} ?>" />
+                            </div>
+                        </div>
+                      <?php else: ?>
+                          <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
+                          <?php if ($_taxvat->isEnabled()): ?>
                           <div class="short">
                                 <?php echo $_taxvat->setTaxvat($this->getCustomer()->getTaxvat())->toHtml() ?>
                           </div>
-                      <?php endif ?>
+                          <?php endif; ?>
+                      <?php endif; ?>
+                      
                      <!--
                           IF BLOCO IE -----------------------------------------
                      -->
@@ -344,7 +331,7 @@ $has_addr	= $this->customerHasAddresses();
                 <input type="hidden" name="billing[lastname]" value="<?php echo $this->htmlEscape($this->getCustomer()->getLastname()) ?>"/>
                 <input type="hidden" name="billing[tipopessoa]" value="<?php echo $this->htmlEscape($this->getCustomer()->getTipopessoa()) ?>"/>
                 <input type="hidden" name="billing[rg]" value="<?php echo $this->htmlEscape($this->getCustomer()->getRg()) ?>"/>
-                <input type="hidden" name="billing[cpfcnpj]" value="<?php echo $this->htmlEscape($this->getCustomer()->getCpfcnpj()) ?>"/>
+                <input type="hidden" name="cpfcnpj" value="<?php echo $this->htmlEscape($this->getCustomer()->getCpfcnpj()) ?>"/>
                 <input type="hidden" name="billing[taxvat]" value="<?php echo $this->htmlEscape($this->getCustomer()->getTaxvat()) ?>"/>
                 <input type="hidden" name="billing[ie]" value="<?php echo $this->htmlEscape($this->getCustomer()->getIe()) ?>"/>
                 <input type="hidden" name="billing[empresa]" value="<?php echo $this->htmlEscape($this->getCustomer()->getEmpresa()) ?>"/>
@@ -765,76 +752,5 @@ $has_addr	= $this->customerHasAddresses();
     Validation.add('validar_cpf', 'O CPF informado \xE9 invalido', function(v){return validaCPF(v,0);});
     Validation.add('validar_cpf2', 'O CNPJ informado \xE9 invalido', function(v){return validaCPF(v,0);});
     Validation.add('validar_cpfcnpj', 'O CPF/CNPJ informado \xE9 invalido', function(v){return validaCPF(v,0);});
-//]]>
-</script>
-
-
-
-
-<script type="text/javascript">
-//<![CDATA[
-
-/*===================================================== ONLOAD ===========================================================*/
-
-        var tipovindobanco;
-        var existe;
-
-        /*Pega tipo pessoa vindo do banco e o seta*/
-        tipovindobanco = "<?php echo $this->htmlEscape($this->getCustomer()->getTipopessoa()) ?>";
-
-        /*Verifica se existe o Taxvat*/
-        existe = $j('input[name*="[taxvat]"]').length;
-
-
-        if(tipovindobanco == 'Fisica'){
-          /*fisica*/
-
-            /*Se existe o Taxvat alterna entre eles mudando o name conforme selecionado o tipo pessoa*/
-            if( existe != ''){
-                /*BILLING*/
-                $j('input[name*="[taxvat-old]"]').attr('name', 'billing[taxvat]');     /*CNPJ OK*/
-                $j('input[name*="[taxvat]"]:eq(1)').attr('name', 'NULL');              /*CPF NULL*/
-
-                /*LIMPA CAMPOS*/
-                $j('input[name*="[taxvat]"]').attr('class', 'validar_cpfcnpj input-text');
-            }else{
-                /*BILLING*/
-                $j('.Binputcnpj').attr('name', "NULL");           /*CNPJ NULL*/
-                $j('.Binputcpf').attr('name', "billing[cpfcnpj]");  /*CPF OK*/
-            }
-
-            /*Exibe ou oculta os boxs*/
-            $j('.boxpj').hide();
-            $j('.boxpf').show();
-
-            /*Exibe ou oculta o entregar em outro endereço conforme a selecao do tipo pessoa*/
-            $j('li.options').find("label:contains('Entregar')").css('visibility', 'visible');
-            $j('input[name*="[same_as_billing]"]').css('visibility', 'visible');
-
-        }else if(tipovindobanco == 'Juridica'){
-          /*juricica*/
-
-            /*Se existe o Taxvat alterna entre eles mudando o name conforme selecionado o tipo pessoa*/
-            if( existe != ''){
-                /*BILLING*/
-                $j('input[name*="[taxvat-old]"]').attr('name', 'billing[taxvat]');     /*CNPJ OK*/
-                $j('input[name*="[taxvat]"]:eq(0)').attr('name', 'NULL');             /*CPF NULL*/
-
-                /*ADD CLASS NO TAXVAT*/
-                $j('input[name*="[taxvat]"]').attr('class', 'validar_cpfcnpj input-text');
-            }else{
-                /*BILLING*/
-                $j('.Binputcnpj').attr('name', 'billing[cpfcnpj]'); /*CNPJ OK*/
-                $j('.Binputcpf').attr('name', 'NULL');            /*CPF NULL*/
-            }
-
-            /*Exibe ou oculta os boxs*/
-            $j('.boxpj').show();
-            $j('.boxpf').hide();
-
-            /*Exibe ou oculta o entregar em outro endereço conforme a selecao do tipo pessoa*/
-            $j('li.options').find("label:contains('Entregar')").css('visibility', 'hidden');
-            $j('input[name*="[same_as_billing]"]').css('visibility', 'hidden');
-        }
 //]]>
 </script>
