@@ -48,11 +48,27 @@ jQuery(document).ready(function($j) {
             $j('input[name*="year"]').attr('maxlength','4');
             $j('input[name*="postcode"]').attr('maxlength','8');
 			
-			if($j('.account-create').length) {
+			
+            if($j('.account-create').length) {
                 $j('.account-create .boxpf #cpfcnpj').attr('name', 'cpfcnpj').removeAttr('disabled');
                 $j('.account-create .boxpj #cpfcnpj').attr('name', 'cpfcnpj-disabled').attr('disabled', 'disabled');
+				
+		$j('input[name="taxvat-old"]').attr('name', 'taxvat');
+                $j('input[name="taxvat"]:eq(1)').attr('name', 'taxvat-old');
+
+                $j('input[name="taxvat-old"]').attr('class', 'input-text').attr('disabled', 'disabled');
+                $j('input[name="taxvat"]').attr('class', 'validar_cpfcnpj t1 required-entry input-text').removeAttr('disabled');
             }
             if($j('#onepagecheckout_orderform').length) {
+                $j('.boxpf input[id="taxvat"]').attr('id', 'billing:taxvat');
+                $j('.boxpj input[id="taxvat"]').attr('id', 'billing:taxvat');
+                
+		$j('.boxpf input[id="billing:taxvat"]').attr('name', 'billing[taxvat]');
+                $j('.boxpj input[id="billing:taxvat"]').attr('name', 'billing[taxvat-old]');
+                
+                $j('.boxpj input[id="billing:taxvat"]').attr('class', 'input-text').attr('disabled', 'disabled');
+                $j('.boxpf input[id="billing:taxvat"]').attr('class', 'validar_cpfcnpj t1 required-entry input-text').removeAttr('disabled');
+			
                 $j('#onepagecheckout_orderform .boxpf #cpfcnpj').attr('name', 'cpfcnpj').removeAttr('disabled');
                 $j('#onepagecheckout_orderform .boxpj #cpfcnpj').attr('name', 'cpfcnpj-disabled').attr('disabled', 'disabled');
             }
@@ -77,19 +93,18 @@ jQuery(document).ready(function($j) {
                         $j('input[name="taxvat-old"]').attr('name', 'taxvat');
                         $j('input[name="taxvat"]:eq(1)').attr('name', 'taxvat-old');
 
-                        $j('input[name="taxvat-old"]').attr('class', 'input-text');
-                        $j('input[name="taxvat"]').attr('class', 'validar_cpfcnpj input-text');
+                        $j('input[name="taxvat-old"]').attr('class', 'input-text').attr('disabled', 'disabled');
+                        $j('input[name="taxvat"]').attr('class', 'validar_cpfcnpj t1 required-entry input-text').removeAttr('disabled');
 
                         /*BILLING*/
-                        $j('input[name="billing[taxvat-old]"]').attr('name', 'billing[taxvat]');
-                        $j('input[name="billing[taxvat]"]:eq(1)').attr('name', 'billing[taxvat-old]"]');
+                        $j('.boxpf input[id="billing:taxvat"]').attr('name', 'billing[taxvat]');
+                        $j('.boxpj input[id="billing:taxvat"]').attr('name', 'billing[taxvat-old]');
+                        
+                        $j('.boxpj input[id="billing:taxvat"]').attr('class', 'input-text').attr('disabled', 'disabled');
+                        $j('.boxpf input[id="billing:taxvat"]').attr('class', 'validar_cpfcnpj t1 required-entry input-text').removeAttr('disabled');
 
                         /*LIMPA CAMPOS*/
-                        $j('input[name="taxvat"]').val('');
-                        $j('input[name="billing[taxvat]"]').val('');
-
-                        /*ADD CLASS TAXVAT*/
-                        $j('input[name*="taxvat"]').attr('class', 'validar_cpfcnpj input-text');
+                        $j('input[name*="taxvat"]').val('');
                     }else{
                         /*CADASTRO*/
                         $j('.account-create .boxpf #cpfcnpj').attr('name', 'cpfcnpj').removeAttr('disabled');
@@ -100,7 +115,7 @@ jQuery(document).ready(function($j) {
                         $j('#onepagecheckout_orderform .boxpj #cpfcnpj').attr('name', 'cpfcnpj-disabled').attr('disabled', 'disabled');
                    
                         /*LIMPA CAMPOS*/
-                        //$j('input[name="cpfcnpj"]').val('');
+                        $j('input[name*="cpfcnpj"]').val('');
                         //$j('input[name="billing[cpfcnpj]"]').val('');
                     }
 
@@ -121,19 +136,18 @@ jQuery(document).ready(function($j) {
                         $j('input[name="taxvat-old"]').attr('name', 'taxvat');
                         $j('input[name="taxvat"]:eq(0)').attr('name', 'taxvat-old');
 
-                        $j('input[name="taxvat-old"]').attr('class', 'input-text');
-                        $j('input[name="taxvat"]').attr('class', 'validar_cpfcnpj input-text');
+                        $j('input[name="taxvat-old"]').attr('class', 'input-text').attr('disabled', 'disabled');
+                        $j('input[name="taxvat"]').attr('class', 'validar_cpfcnpj t1 required-entry input-text').removeAttr('disabled');
 
                         /*BILLING*/
-                        $j('input[name="billing[taxvat-old]"]').attr('name', 'billing[taxvat]');
-                        $j('input[name="billing[taxvat]"]:eq(0)').attr('name', 'billing[taxvat-old]');
+                        $j('.boxpj input[id="billing:taxvat"]').attr('name', 'billing[taxvat]');
+                        $j('.boxpf input[id="billing:taxvat"]').attr('name', 'billing[taxvat-old]');
+                        
+                        $j('.boxpf input[id="billing:taxvat"]').attr('class', 'input-text').attr('disabled', 'disabled');
+                        $j('.boxpj input[id="billing:taxvat"]').attr('class', 'validar_cpfcnpj required-entry t1 input-text').removeAttr('disabled');
 
                         /*LIMPA CAMPOS*/
-                        $j('input[name="taxvat"]').val('');
-                        $j('input[name="billing[taxvat]"]').val('');
-
-                        /*ADD CLASS TAXVAT*/
-                        $j('input[name*="taxvat"]').attr('class', 'validar_cpfcnpj input-text');
+                        $j('input[name*="taxvat"]').val('');
                     }else{
                         /*CADASTRO*/
                         $j('.account-create .boxpj #cpfcnpj').attr('name', 'cpfcnpj').removeAttr('disabled');
@@ -144,7 +158,7 @@ jQuery(document).ready(function($j) {
                         $j('#onepagecheckout_orderform .boxpf #cpfcnpj').attr('name', 'cpfcnpj-disabled').attr('disabled', 'disabled');
 
                         /*LIMPA CAMPOS*/
-                        //$j('input[name="cpfcnpj"]').val('');
+                        $j('input[name*="cpfcnpj"]').val('');
                         //$j('input[name="billing[cpfcnpj]"]').val('');
                     }
 
