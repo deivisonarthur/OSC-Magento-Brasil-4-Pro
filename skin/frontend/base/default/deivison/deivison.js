@@ -104,7 +104,7 @@ jQuery(document).ready(function($j) {
                         $j('.boxpf input[id="billing:taxvat"]').attr('class', 'validar_cpfcnpj t1 required-entry input-text').removeAttr('disabled');
 
                         /*LIMPA CAMPOS*/
-                        $j('input[name*="taxvat"]').val('');
+                        //$j('input[name*="taxvat"]').val('');
                     }else{
                         /*CADASTRO*/
                         $j('.account-create .boxpf #cpfcnpj').attr('name', 'cpfcnpj').removeAttr('disabled');
@@ -115,7 +115,7 @@ jQuery(document).ready(function($j) {
                         $j('#onepagecheckout_orderform .boxpj #cpfcnpj').attr('name', 'cpfcnpj-disabled').attr('disabled', 'disabled');
                    
                         /*LIMPA CAMPOS*/
-                        $j('input[name*="cpfcnpj"]').val('');
+                        //$j('input[name*="cpfcnpj"]').val('');
                         //$j('input[name="billing[cpfcnpj]"]').val('');
                     }
 
@@ -147,7 +147,7 @@ jQuery(document).ready(function($j) {
                         $j('.boxpj input[id="billing:taxvat"]').attr('class', 'validar_cpfcnpj required-entry t1 input-text').removeAttr('disabled');
 
                         /*LIMPA CAMPOS*/
-                        $j('input[name*="taxvat"]').val('');
+                        //$j('input[name*="taxvat"]').val('');
                     }else{
                         /*CADASTRO*/
                         $j('.account-create .boxpj #cpfcnpj').attr('name', 'cpfcnpj').removeAttr('disabled');
@@ -158,7 +158,7 @@ jQuery(document).ready(function($j) {
                         $j('#onepagecheckout_orderform .boxpf #cpfcnpj').attr('name', 'cpfcnpj-disabled').attr('disabled', 'disabled');
 
                         /*LIMPA CAMPOS*/
-                        $j('input[name*="cpfcnpj"]').val('');
+                        //$j('input[name*="cpfcnpj"]').val('');
                         //$j('input[name="billing[cpfcnpj]"]').val('');
                     }
 
