@@ -1,4 +1,3 @@
-
 <div class="page-title">
     <h1 class='h1_opc'><?php echo Mage::getStoreConfig('onepagecheckout/general/title') ?></h1>
     <?php echo $this->__('Fill in the fields below to complete your purchase!') ?>
@@ -119,6 +118,10 @@ $seq_http   = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on');
         });
         opc_window  = new OPC.Window({triggers: win_triggers});
     });
+    
+    
+    var opcDatafields=document.getElementsByClassName('onepagecheckout_datafields')[0];var opcLock=document.createElement('div');opcLock.setStyle({display:'none',position:'relative',width:'100%',top:'0',left:'0',backgroundColor:'#fff',opacity:'0.7'});opcDatafields.appendChild(opcLock);if(checkout){checkout.setLoadWaiting=function(flag){if(flag){opcLock.setStyle({display:'block',height:opcDatafields.offsetHeight+'px'});var container=$('review-buttons-container');container.addClassName('disabled');container.setStyle({opacity:0.5});this._disableEnableAll(container,true)}else if(this.loadWaiting){opcLock.setStyle({display:'none',height:opcDatafields.offsetHeight+'px'});var container=$('review-buttons-container');container.removeClassName('disabled');container.setStyle({opacity:1});this._disableEnableAll(container,false)}this.loadWaiting=flag}};
+    
 
 //]]>
 </script>
