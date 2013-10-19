@@ -150,6 +150,8 @@ OPC.prototype = {
         }
         checkout.setLoadWaiting(true);
         var params = Form.serialize(this.form);
+		//desabilita botão
+        this.disabled=true;
         $('review-please-wait').show();
         var request = new Ajax.Request(this.saveUrl, {
             method: 'post',
@@ -389,11 +391,17 @@ ShippingMethod.prototype = {
     initialize: function () {
         this.addObservers()
     },
-    addObservers: function () {
-        $$('input[name="shipping_method"]').each(function (el) {
-            el.observe('click', function () {
+	addObservers:function(){
+        $$('input[name="shipping_method"]').each(function(el){
+            el.observe('click',function(){
+                var methods=document.getElementsByName('shipping_method');
+                for(var i=0;i<methods.length;i++){
+                    if(!methods[i].checked){
+                        methods[i].disabled=true;
+                    }
+                }
                 checkout.update({
-                    'review': 1
+                    'review':1
                 })
             })
         })
@@ -720,6 +728,7 @@ function open_login() {
     }
     return url
 }
+/*
 window.onload = function () {
     checkout.update({
         'payment-method': 1,
@@ -727,6 +736,7 @@ window.onload = function () {
         'review': 1
     })
 }
+*/
 
 /*
     bugs:
