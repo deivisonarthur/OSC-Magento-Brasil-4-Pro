@@ -73,6 +73,9 @@ jQuery(document).ready(function($j) {
                 $j('#onepagecheckout_orderform .boxpj #cpfcnpj').attr('name', 'cpfcnpj-disabled').attr('disabled', 'disabled');
             }
 
+            $j('input[name*="day"], input[name*="month"],input[name*="year"]').autotab_magic().autotab_filter('numeric');
+
+
 /*===================================================== Click ===========================================================*/
             /*Roda o clique para selecionar o tipo pessoa*/
             $j('input[name*="tipopessoa"]').click( function(){
@@ -438,34 +441,16 @@ jQuery(document).ready(function($j) {
     				success:function(respostaCEP){
     					//alert(respostaCEP); //para testes
 
-                        var r = respostaCEP;
-
-                        street_1 = r.substring(0, (i = r.indexOf(':')));
-                        document.getElementById(quale+':street1').value = unescape(street_1.replace(/\+/g," "));
-
-                        r = r.substring(++i);
-                        street_4 = r.substring(0, (i = r.indexOf(':')));
-                        document.getElementById(quale+':street4').value = unescape(street_4.replace(/\+/g," "));
-
-                        r = r.substring(++i);
-                        city = r.substring(0, (i = r.indexOf(':')));
-                        document.getElementById(quale+':city').value = unescape(city.replace(/\+/g," "));
-
-                        r = r.substring(++i);
-                        region = r.substring(0, (i = r.indexOf(':')));
-
-                        //document.getElementById(quale+':region').selectedIndex = unescape(region.replace(/\+/g," "));
-                        //document.getElementById(quale+':region_id').selectedIndex = unescape(region.replace(/\+/g," "));
-
-                        region = region.replace(/\+/g," ");
-
-                        //alert(region);
-                        $j('select[id*="'+quale+':region"]').children("option:contains('"+region+"')").attr('selected', 'selected');
-                        $j('select[id*="'+quale+':region_id"]').children("option:contains('"+region+"')").attr('selected', 'selected');
-
-                        //document.getElementById(quale+':region_id').children("option:contains('"+region+"')").attr('selected', 'selected');
-
-
+                        var obj = eval ("(" + respostaCEP + ")");
+                        
+                        $j('input[name="billing[street][1]"]').val(obj.logradouro);
+                        $j('input[name="billing[street][4]"]').val(obj.bairro);
+                        $j('input[name="billing[city]"]').val(obj.cidade);
+                        
+                        
+                        var regiao = document.getElementById('billing:region_id');
+                        regiao.selectedIndex = obj.indice;
+                        $j('input[name="billing[region]"]').val(regiao.value);
 
                         setTimeout(function() { document.getElementById(quale+':street2').focus(); }, 1);
     				}
