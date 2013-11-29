@@ -141,7 +141,7 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </analytics>
-<!--
+
                         <guest_checkout1 translate="label" module="checkout">
                             <label>Exibir login padrao do OSC</label>
                             <frontend_type>select</frontend_type>
@@ -170,7 +170,7 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </habilitarcad>
--->
+
                         <shipping_address translate="label" module="onepagecheckout">
                             <label>Permitir entregar em outro endereco?</label>
                             <comment>Valido somente para compras por pessoa fisica</comment>
@@ -216,7 +216,7 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-<!--
+
                         <cpfcnpjtaxvat translate="label" module="checkout">
                             <label>CPF/CNPJ pelo Taxvat</label>
                             <comment>Esse campo so funciona as opcoes (Nao exibir campo) e (Obrigatorio)</comment>
@@ -346,7 +346,7 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </country>
--->
+
                         <sexo translate="label" module="checkout">
                             <label>Sexo</label>
                             <frontend_type>select</frontend_type>
@@ -402,7 +402,7 @@
 
 
 
- <!--
+ 
                 <outrasopcoes translate="label">
                     <label>Tela do cadastro e edit do usuario</label>
                     <frontend_type>text</frontend_type>
@@ -491,7 +491,7 @@
 
                     </fields>
                 </outrasopcoes>
--->
+
 
                 <agreements translate="label" module="checkout">
                     <label>Termos e condicoes</label>
@@ -524,7 +524,7 @@
 
 
 
-<!--
+
                 <geo_ip translate="label">
                     <label>GeoIP</label>
                     <frontend_type>text</frontend_type>
@@ -572,7 +572,7 @@
                     </fields>
                 </geo_ip>
 
--->
+
 
             </groups>
         </onepagecheckout>

@@ -412,7 +412,7 @@ $has_addr	= $this->customerHasAddresses();
                                 }
                                 ?>
             					<div class="data_area">
-            						<input type="text" id="celular" name="billing[celular]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getCelular()) ?>" title="<?php echo $this->__('Celular') ?>" class="t1 required-entry" id="billing:fax" />
+            						<input type="text" id="celular" name="billing[celular]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getCelular()) ?>" title="<?php echo $this->__('Celular') ?>" class="t1<?php if($celular === 'required') {echo ' class=" required-entry" ';}?>" id="billing:fax" />
             					</div>
             				</div>
                         <?php endif ?>
