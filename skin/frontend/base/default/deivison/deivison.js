@@ -1,8 +1,8 @@
 /*=========================================================================================================================================================
  *
- *  PROJETO OSC MAGENTO BRASIL - VERS�O FINAL V3.0
+ *  PROJETO OSC MAGENTO BRASIL - VERSÃO FINAL V3.0
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *  O m�dulo One Step Checkout normatizado para a localiza��o brasileira.
+ *  O módulo One Step Checkout normatizado para a localização brasileira.
  *  site do projeto: http://onestepcheckout.com.br/
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
@@ -23,11 +23,11 @@
  *
  *
  *
- *  GOSTOU DO M�DULO?
+ *  GOSTOU DO MÓDULO?
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *  Se voc� gostou, se foi �til para voc�, se fez voc� economizar aquela grana pois estava prestes a pagar caro por aquele m�dulo pago, pois n�o achava uma
- *  solu��o gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doa��o de qualquer valor, n�o vou negar e vou ficar grato! voc�
- *  pode fazer isso visitando a p�gina do projeto em: http://onestepcheckout.com.br/
+ *  Se você gostou, se foi útil para você, se fez você economizar aquela grana pois estava prestes a pagar caro por aquele módulo pago, pois não achava uma
+ *  solução gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doação de qualquer valor, não vou negar e vou ficar grato! você
+ *  pode fazer isso visitando a página do projeto em: http://onestepcheckout.com.br/
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
 /*=========================================================================================================================================================
