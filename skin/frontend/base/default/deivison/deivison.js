@@ -413,10 +413,13 @@
 
 
         function buscarEndereco(host, quale) {
-
-
+    var prefix = "#"+ quale + "\\:",
+        cep = $j(prefix+'postcode').val().replace(/[^0-9]+/g, '');
+    if (cep.toString().length != 8) {
+        return false;
+    }
     			$j.ajax({
-    				url: host + 'frontend/base/default/deivison/buscacep.php?cep=' + document.getElementById(quale+':postcode').value.replace(/\+/g, ''),
+        url: host + 'frontend/base/default/deivison/buscacep.php?cep=' + cep,
     				type:'GET',
     				dataType: 'html',
     				success:function(respostaCEP){
@@ -424,16 +427,16 @@
 
                         var obj = eval ("(" + respostaCEP + ")");
                         
-                        $j('input[name="billing[street][1]"]').val(obj.logradouro);
-                        $j('input[name="billing[street][4]"]').val(obj.bairro);
-                        $j('input[name="billing[city]"]').val(obj.cidade);
+            $j(prefix+'street1').val(obj.logradouro);
+            $j(prefix+'street4').val(obj.bairro);
+            $j(prefix+'city').val(obj.cidade);
                         
                         
-                        var regiao = document.getElementById('billing:region_id');
-                        regiao.selectedIndex = obj.indice;
-                        $j('input[name="billing[region]"]').val(regiao.value);
 
-                        setTimeout(function() { document.getElementById(quale+':street2').focus(); }, 1);
+            $j('select[id*="'+quale+':region"]').children("option:contains('"+obj.uf_extenso+"')").attr('selected', 'selected');
+            $j('select[id*="'+quale+':region_id"]').children("option:contains('"+obj.codigo+"')").attr('selected', 'selected');
+
+            setTimeout(function() { $j(prefix+'street2').focus(); }, 1);
     				}
     			});
 
@@ -564,10 +567,10 @@ $j(function($) {
                     ,'payment-method': 1
                     //'shipping-method': 1
               });
-             setTimeout(function(){
-                        checkout.update({
-                            'review': 1,
-                            //'payment-method': 1
+              setTimeout(function(){
+              checkout.update({
+                'review': 1
+                //,'payment-method': 1
                         });
              }, 500);
 
