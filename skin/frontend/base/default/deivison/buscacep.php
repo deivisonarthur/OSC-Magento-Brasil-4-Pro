@@ -1,4 +1,4 @@
-<?
+<?php
 /*=========================================================================================================================================================
  *
  *  PROJETO OSC MAGENTO BRASIL - VERSÃO FINAL V3.0
@@ -173,6 +173,7 @@ if ( isset($dados) ) {
         //$texto = $dados['logradouro'].":".$dados['bairro'].":".$dados['cidade'].":".$uf.":".$num.":".$estado.";";
             $dados['codigo'] = $num;
             $dados['indice'] = $estado;
+            $dados['uf_extenso'] = $uf;
         echo json_encode($dados);
 
 }else {
