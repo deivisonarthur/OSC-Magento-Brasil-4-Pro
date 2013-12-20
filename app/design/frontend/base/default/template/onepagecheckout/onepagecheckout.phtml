@@ -20,7 +20,7 @@
     $guest_checkout2 = Mage::getStoreConfig('onepagecheckout/general/guest_checkout2');    
     if ($guest_checkout2 === '1') : ?>
     <p class="onepagecheckout_loginarea">
-        <a href="<?=Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>customer/account/login/" class="onepagecheckout_loginlink" >
+        <a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>customer/account/login/" class="onepagecheckout_loginlink" >
             <?php echo $this->__('Already registered? Click here to login') ?>
         </a>
     </p>
@@ -136,7 +136,7 @@ $seq_http   = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on');
 </script>
 <script type="text/javascript">
     try{
-    var pageTracker = _gat._getTracker("<?=Mage::getStoreConfig('onepagecheckout/general/analytics')?>");
+    var pageTracker = _gat._getTracker("<?php echo Mage::getStoreConfig('onepagecheckout/general/analytics')?>");
     pageTracker._trackPageview();
     } catch(err) {}
 
