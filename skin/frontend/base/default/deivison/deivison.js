@@ -50,7 +50,6 @@
             $j('input[name*="year"]').attr('maxlength','4');
             $j('input[name*="postcode"]').attr('maxlength','8');
 
-            $j('input[name*="day"], input[name*="month"],input[name*="year"]').autotab_magic().autotab_filter('numeric');
 
 
 /*===================================================== Click ===========================================================*/
@@ -413,33 +412,31 @@
 
 
         function buscarEndereco(host, quale) {
-    var prefix = "#"+ quale + "\\:",
-        cep = $j(prefix+'postcode').val().replace(/[^0-9]+/g, '');
-    if (cep.toString().length != 8) {
-        return false;
-    }
-    			$j.ajax({
-        url: host + 'frontend/base/default/deivison/buscacep.php?cep=' + cep,
-    				type:'GET',
-    				dataType: 'html',
-    				success:function(respostaCEP){
-    					//alert(respostaCEP); //para testes
+            var prefix = "#"+ quale + "\\:",
+            cep = $j(prefix+'postcode').val().replace(/[^0-9]+/g, '');
+            if (cep.toString().length != 8) {
+                return false;
+            }
 
-                        var obj = eval ("(" + respostaCEP + ")");
-                        
-            $j(prefix+'street1').val(obj.logradouro);
-            $j(prefix+'street4').val(obj.bairro);
-            $j(prefix+'city').val(obj.cidade);
-                        
-                        
+            $j.ajax({
+                url: host + 'frontend/base/default/deivison/buscacep.php?cep=' + cep,
+                type:'GET',
+                dataType: 'html',
+                success:function(respostaCEP){
+                    //alert(respostaCEP); //para testes
 
-            $j('select[id*="'+quale+':region"]').children("option:contains('"+obj.uf_extenso+"')").attr('selected', 'selected');
-            $j('select[id*="'+quale+':region_id"]').children("option:contains('"+obj.codigo+"')").attr('selected', 'selected');
+                    var obj = eval ("(" + respostaCEP + ")");
 
-            setTimeout(function() { $j(prefix+'street2').focus(); }, 1);
-    				}
-    			});
+                    $j(prefix+'street1').val(obj.logradouro);
+                    $j(prefix+'street4').val(obj.bairro);
+                    $j(prefix+'city').val(obj.cidade);
 
+                    $j('select[id*="'+quale+':region"]').children("option:contains('"+obj.uf_extenso+"')").attr('selected', 'selected');
+                    $j('select[id*="'+quale+':region_id"]').val(obj.codigo);
+
+                    setTimeout(function() { $j(prefix+'street2').focus(); }, 1);
+                }
+            });
         };
 
 

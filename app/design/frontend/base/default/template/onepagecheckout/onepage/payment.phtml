@@ -1,3 +1,11 @@
+<script type="text/javascript">
+    //<![CDATA[
+    var quoteBaseGrandTotal = <?php echo (float)$this->getQuoteBaseGrandTotal(); ?>;
+    var checkQuoteBaseGrandTotal = quoteBaseGrandTotal;
+ //   var payment = new Payment('co-payment-form', '<?php echo $this->getUrl('checkout/onepage/savePayment') ?>');
+    var lastPrice;
+    //]]>
+</script>
 <div id="payment-method" class="onepagecheckout_block">
     <div class="op_block_title"><?php echo $this->__('Payment Method') ?></div>
     <div class="tool-tip" id="payment-tool-tip" style="display:none;">
