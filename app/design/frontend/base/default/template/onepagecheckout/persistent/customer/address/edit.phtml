@@ -44,7 +44,7 @@ if ($jquery !== '0') :
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)?>frontend/base/default/deivison/jquery.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)?>frontend/base/default/deivison/jquery.maskedinput-1.2.2.min.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)?>frontend/base/default/deivison/deivison.js"></script>
-
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)?>frontend/base/default/deivison/osc.validation.js"></script>
 
 <?php endif; ?>
 
@@ -170,8 +170,8 @@ if ($jquery !== '0') :
                           </div>
                       <?php endif; ?>
                       <?php
-            			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/general/taxvat');
-            			if ($cpfcnpj !== '1') : ?>
+            			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/outrasopcoes/cpfcnpjregistro');
+            			if ($cpfcnpj !== 'hidden') : ?>
                           <div class="field">
           	                <label <?php if ( $cpfcnpj  === 'required' ){ echo 'class="required"'; }?> > <?php if ( $cpfcnpj  === 'required' ){ echo '<em>*</em>'; }?><?php echo $this->__('CPF') ?></label>
                               <div class="input-box">
@@ -220,8 +220,8 @@ if ($jquery !== '0') :
             <li class="fields boxpj" style="display: none">
                 <div class="customer-name">
                       <?php
-            			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/general/taxvat');
-            			if ($cpfcnpj !== '1') : ?>
+            			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/outrasopcoes/cpfcnpjregistro');
+            			if ($cpfcnpj !== 'hidden') : ?>
                           <div class="field">
           	                <label <?php if ( $cpfcnpj  === 'required' ){ echo 'class="required"'; }?> > <?php if ( $cpfcnpj  === 'required' ){ echo '<em>*</em>'; }?><?php echo $this->__('CNPJ') ?></label>
                               <div class="input-box">
@@ -301,25 +301,21 @@ if ($jquery !== '0') :
                         <input type="text" name="telephone" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="telephone" />
                     </div>
                 </div>
+
+                <?php $fax	= Mage::getStoreConfig('onepagecheckout/address_form/fax');?>
+                <?php if ($fax !== 'hidden') : ?>
                 <div class="field">
                     <label for="fax"><?php echo $this->__('Fax') ?></label>
                     <div class="input-box">
                         <input type="text" name="fax" id="fax" title="<?php echo $this->__('Fax') ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getFax()) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('fax') ?>" />
                     </div>
                 </div>
-            </li>
+                <?php endif ?>
 
-
-            <li class="fields">
-                <?php
-                $celular	= Mage::getStoreConfig('onepagecheckout/address_form/celular');
-                ?>
+                <?php $celular	= Mage::getStoreConfig('onepagecheckout/address_form/celular');?>
       			<?php if ($celular !== 'hidden') : ?>
       				<div class="field">
-      					<label for="billing:fax"<?php if($celular === 'required') {echo ' class="required" ';}?>>
-      						<?php echo $this->__('Celular') ?>
-      					</label>
-      					<?php if($celular === 'required') {echo ' <sup>*</sup> ';}?>
+                        <label for="celular" <?php if($celular === 'required') {echo ' class="required" ';}?>><?php if($celular === 'required') {echo ' <em>*</em> ';}?><?php echo $this->__('Celular') ?></label>
       					<div class="data_area">
       						<input type="text" id="celular" name="celular" value="<?php echo $this->escapeHtml($this->getAddress()->getCelular()) ?>" title="<?php echo $this->__('Celular') ?>" class="input-text <?php if($celular === 'required') {echo ' required-entry ';}?>" id="billing:fax" />
       					</div>
@@ -354,16 +350,13 @@ if ($jquery !== '0') :
                 </div>
             </li>
 
-
-
-            <!--enderecao-->
+            <!--endereço-->
             <?php
 			$endereco = Mage::getStoreConfig('onepagecheckout/address_form/address');
 			if ($endereco !== 'hidden') : ?>
                 <!-- endereco-->
 				<li  class="wide">
-                    <label for="endereco" <?php if ( $endereco  === 'required' ){ echo 'class="required"'; }?> ><?php echo $this->__('Endere&ccedil;o') ?></label>
-					<?php if($endereco === 'required') { echo ' <sup>*</sup> ';}?>
+                    <label for="billing:street1" <?php if ( $endereco  === 'required' ){ echo 'class="required"'; }?>><?php if($endereco === 'required') {echo ' <em>*</em> ';}?><?php echo $this->__('Endere&ccedil;o') ?></label>
 					<div class="data_area">
 						<input type="text" id="billing:street1" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1))   ?> " title="<?php echo $this->__('Endere&ccedil;o') ?>" class="input-text t1<?php if($endereco === 'required'){ echo ' required-entry';} ?>" />
 					</div>
@@ -381,9 +374,9 @@ if ($jquery !== '0') :
         				<?php if ($numero !== 'hidden') : ?>
         					<div class="field">
         						<label for="billing:street2"<?php if($numero === 'required') { echo ' class="required" ';}?>>
+                                    <?php if($numero === 'required') {echo ' <em>*</em> ';}?>
         							<?php echo $this->__('N&uacute;mero') ?>
         						</label>
-        						<?php if($numero === 'required') { echo ' <sup>*</sup> ';}?>
         						<div class="data_area">
             						<input type="text" id="billing:street2" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(2)) ?>" title="<?php echo $this->__('N&uacute;mero') ?>" class="input-text t1<?php if($numero === 'required'){ echo ' required-entry';} ?>" />
         						</div>
@@ -393,9 +386,9 @@ if ($jquery !== '0') :
             			<?php if ($complemento !== 'hidden') : ?>
             				<div class="field">
             					<label for="billing:street3"<?php if($complemento === 'required') {echo ' class="required" ';}?>>
+                                    <?php if($complemento === 'required') {echo ' <em>*</em> ';}?>
             						<?php echo $this->__('Complemento') ?>
             					</label>
-            					<?php if($complemento === 'required') {echo ' <sup>*</sup> ';}?>
             					<div class="data_area">
             						<input type="text" id="billing:street3" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(3))  ?>" title="<?php echo $this->__('Complemento') ?>" class="input-text t1<?php if($complemento === 'required'){ echo ' required-entry';} ?>" />
             					</div>
@@ -409,11 +402,12 @@ if ($jquery !== '0') :
 			$bairro = Mage::getStoreConfig('onepagecheckout/address_form/address4');
 			if ($bairro !== 'hidden') : ?>
                 <!-- endereco-->
-				<li class="wide">
-                    <label for="bairro" <?php if ( $bairro  === 'required' ){ echo 'class="required"'; }?> ><?php echo $this->__('Bairro') ?></label>
-					<?php if($bairro === 'required') { echo ' <sup>*</sup> ';}?>
-					<div class="data_area">
+				<li class="fiels">
+                    <div class="field">
+                        <label for="billing:street4" <?php if ( $bairro  === 'required' ){ echo 'class="required"'; }?>><?php if($bairro === 'required') {echo ' <em>*</em> ';}?><?php echo $this->__('Bairro') ?></label>
+                        <div class="input-box">
 						<input type="text" id="billing:street4" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(4))  ?>" title="<?php echo $this->__('Bairro') ?>" class="input-text t1<?php if($bairro === 'required'){ echo ' required-entry';} ?>" />
+					</div>
 					</div>
 				</li>
             <?php endif; ?>
@@ -439,14 +433,14 @@ if ($jquery !== '0') :
                     </div>
                 </div>
                 <div class="field">
-                    <label for="region_id" class="required"><em>*</em><?php echo $this->__('State/Province') ?></label>
+                    <label for="billing:region_id" class="required"><em>*</em><?php echo $this->__('State/Province') ?></label>
                     <div class="input-box">
-                        <select id="region_id" name="region_id" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;">
+                        <select id="billing:region_id" name="billing[region_id]" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;">
                            <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
                         </select>
                         <script type="text/javascript">
                         //<![CDATA[
-                            $('region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
+                            $('billing:region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
                         //]]>
                         </script>
                         <input type="text" id="region" name="region" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>"  title="<?php echo $this->__('State/Province') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?>" />
@@ -494,7 +488,7 @@ if ($jquery !== '0') :
 <script type="text/javascript">
 //<![CDATA[
     var dataForm = new VarienForm('form-validate', true);
-    new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
+    new RegionUpdater('country', 'region', 'billing:region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
 //]]>
 </script>
 
@@ -573,3 +567,14 @@ if ($jquery !== '0') :
 //]]>
 </script>
 
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try{
+        var pageTracker = _gat._getTracker("<?php echo Mage::getStoreConfig('onepagecheckout/general/analytics')?>");
+        pageTracker._trackPageview();
+    } catch(err) {}
+
+</script>

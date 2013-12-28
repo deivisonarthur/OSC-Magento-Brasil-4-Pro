@@ -70,19 +70,37 @@ $has_addr	= $this->customerHasAddresses();
             <?php if (!$logged)  : ?>
 			<div class="two_fields">
 				<?php echo $this->getLayout()->createBlock('onepagecheckout/widget_name')->setObject($this->getCustomer())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() ?>
+
+            <script type="text/javascript">
+                //<![CDATA[
+                $j('input[name="billing[firstname]"]').addClass("input-text");
+                $j('input[name="billing[lastname]"]').addClass("input-text");
+                //]]>
+            </script>
+
+
 			</div>
 			<div class='clr'></div>
-				<div class="full">
+				<div class="short">
 					<label for="billing:email" class="required">
 						<?php echo $this->__('Email Address') ?>
 					</label>
 					<sup>*</sup>
 					<div class="data_area">
-						<input type="text" name="billing[email]" value="<?php echo $this->htmlEscape($this->getCustomer()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="t1 validate-email required-entry" />
+						<input type="text" name="billing[email]" value="<?php echo $this->htmlEscape($this->getCustomer()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text t1 validate-email required-entry" />
 					</div>
 				</div>
 
+                <div class="short">
 
+                    <label for="billing:confirm_email" class="required">
+                        <?php echo $this->__('Confirm Email Address') ?>
+                    </label>
+                    <sup>*</sup>
+                    <div class="data_area">
+                        <input type="text" name="billing[confirm_email]" value="<?php echo $this->htmlEscape($this->getCustomer()->getEmail()) ?>" title="<?php echo $this->__('Confirm Email Address') ?>" class="input-text t1 validate-cemail required-entry" />
+                    </div>
+				</div>
 
            <!--
                 BLOCO TIPO PESSOA -----------------------------------------
@@ -152,8 +170,8 @@ $has_addr	= $this->customerHasAddresses();
                           BLOCO CPF -----------------------------------------
                      -->
                       <?php
-            			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/outrasopcoes/taxvat');
-                        if ($cpfcnpj) : ?>
+                        $cpfcnpj = Mage::getStoreConfig('onepagecheckout/outrasopcoes/cpfcnpjregistro');
+                        if ($cpfcnpj !== 'hidden') : ?>
                         <div class="short">
           	                <label <?php if ( $cpfcnpj  === 'required' ){ echo 'class="required"'; }?> >          				      	
                             <?php echo $this->__('CPF') ?>
@@ -218,7 +236,7 @@ $has_addr	= $this->customerHasAddresses();
                           IF BLOCO CNPJ -----------------------------------------
                      -->
                       <?php
-            			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/outrasopcoes/taxvat');
+            			$cpfcnpj = Mage::getStoreConfig('onepagecheckout/outrasopcoes/cpfcnpjregistro');
             			if ($cpfcnpj) : ?>
                         <div class="short">
                             <label class="required">          				      	
@@ -371,7 +389,7 @@ $has_addr	= $this->customerHasAddresses();
                                 }
                                 ?>
         						<div class="data_area">
-        							<input type="text" name="billing[telephone]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="t1 required-entry" id="billing:telephone" />
+        							<input type="text" name="billing[telephone]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="input-text t1 required-entry" id="billing:telephone" />
         						</div>
         					</div>
         				<?php endif; ?>
@@ -392,7 +410,7 @@ $has_addr	= $this->customerHasAddresses();
             					</label>
             				
             					<div class="data_area">
-            						<input type="text" name="billing[fax]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getFax()) ?>" title="<?php echo $this->__('Fax') ?>" class="t1 required-entry" id="billing:fax" />
+            						<input type="text" name="billing[fax]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getFax()) ?>" title="<?php echo $this->__('Fax') ?>" class="input-text t1 required-entry" id="billing:fax" />
             					</div>
             				</div>
                         <?php endif ?>
@@ -412,7 +430,7 @@ $has_addr	= $this->customerHasAddresses();
                                 }
                                 ?>
             					<div class="data_area">
-            						<input type="text" id="celular" name="billing[celular]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getCelular()) ?>" title="<?php echo $this->__('Celular') ?>" class="t1<?php if($celular === 'required') {echo ' class=" required-entry" ';}?>" id="billing:fax" />
+            						<input type="text" id="celular" name="billing[celular]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getCelular()) ?>" title="<?php echo $this->__('Celular') ?>" class="input-text t1<?php if($celular === 'required') {echo ' class=" required-entry" ';}?>" id="billing:fax" />
             					</div>
             				</div>
                         <?php endif ?>
@@ -447,7 +465,7 @@ $has_addr	= $this->customerHasAddresses();
                         }
                         ?>
 						<div class="data_area">
-							<input maxlength="8" type="text" title="<?php echo $this->__('Zip/Postal Code') ?>" name="billing[postcode]" id="billing:postcode" value="<?php echo $this->htmlEscape($this->getBillAddress()->getPostcode()) ?>" class="t1 validate-zip-international<?php if($zip_r === 'required'){echo ' required-entry ';}?> <?php if($tracoAtivo === '1'){ echo ' tracoAtivo';} ?>   " onblur="buscarEndereco('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)?>','billing');"/>
+							<input maxlength="8" type="text" title="<?php echo $this->__('Zip/Postal Code') ?>" name="billing[postcode]" id="billing:postcode" value="<?php echo $this->htmlEscape($this->getBillAddress()->getPostcode()) ?>" class="input-text t1 validate-zip-international<?php if($zip_r === 'required'){echo ' required-entry ';}?> <?php if($tracoAtivo === '1'){ echo ' tracoAtivo';} ?>   " onblur="buscarEndereco('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)?>','billing');"/>
 						</div>
 					</div>
 			<?php endif; ?>
@@ -570,7 +588,7 @@ $has_addr	= $this->customerHasAddresses();
                       }
                       ?>
 					<div class="data_area">
-						<input type="text" title="<?php echo $this->__('City') ?>" name="billing[city]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getCity()) ?>" class="t1<?php if ($city_r === 'required'){ echo ' required-entry ';}?>" id="billing:city" />
+						<input type="text" title="<?php echo $this->__('City') ?>" name="billing[city]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getCity()) ?>" class="input-text t1<?php if ($city_r === 'required'){ echo ' required-entry ';}?>" id="billing:city" />
 					</div>
 				</div>
 			<?php endif; ?>
@@ -593,7 +611,7 @@ $has_addr	= $this->customerHasAddresses();
 							$('billing:region_id').setAttribute('defaultValue',  "<?php echo $this->getBillAddress()->getRegionId() ?>");
 						//]]>
 						</script>
-						<input type="text" id="billing:region" name="billing[region]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getRegion()) ?>"  title="<?php echo $this->__('State/Province') ?>" class="t1 required-entry" style="display:none;" />
+						<input type="text" id="billing:region" name="billing[region]" value="<?php echo $this->htmlEscape($this->getBillAddress()->getRegion()) ?>"  title="<?php echo $this->__('State/Province') ?>" class="input-text t1 required-entry" style="display:none;" />
 					</div>
 				</div>
 			</div>
@@ -656,7 +674,7 @@ $has_addr	= $this->customerHasAddresses();
 						</label>
 						<sup>*</sup>
 						<div class="data_area">
-							<input type="password" name="billing[customer_password]" id="billing:customer_password" title="<?php echo $this->__('Password') ?>" class="t1 required-entry validate-password" />
+							<input type="password" name="billing[customer_password]" id="billing:customer_password" title="<?php echo $this->__('Password') ?>" class="input-text t1 required-entry validate-password" />
 						</div>
 					</div>
 					<div class="short">
@@ -665,7 +683,7 @@ $has_addr	= $this->customerHasAddresses();
 						</label>
 						<sup>*</sup>
 						<div class="data_area">
-							<input type="password" name="billing[confirm_password]" title="<?php echo $this->__('Confirm Password') ?>" id="billing:confirm_password" class="t1 required-entry validate-cpassword" />
+							<input type="password" name="billing[confirm_password]" title="<?php echo $this->__('Confirm Password') ?>" id="billing:confirm_password" class="input-text t1 required-entry validate-cpassword" />
 						</div>
 					</div>
 					<div class='clr'></div>

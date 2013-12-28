@@ -112,7 +112,7 @@
                             <show_in_store>1</show_in_store>
                         </country>
                         <guest_checkout translate="label" module="checkout">
-                            <label>Permintir compras por anonimo?</label>
+                            <label>Permitir compras por anonimo?</label>
                             <comment>Ou seja, o usuario podera efetuar compras sem a necessidade de se cadastrar. Obs: Recomendo sempre cadastrar o usuario, ou seja, setar que nao permite compras po anonimo!</comment>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>

@@ -14,8 +14,7 @@
             <action method="addItem" ifconfig="onepagecheckout/general/jquery"><type>skin_js</type><name>deivison/jquery.maskedinput-1.2.2.min.js</name></action>
             <action method="addItem" ifconfig="onepagecheckout/general/jquery"><type>skin_js</type><name>deivison/jquery.autotab-1.1b.js</name></action>
             <action method="addItem" ifconfig="onepagecheckout/general/jquery"><type>skin_js</type><name>deivison/deivison.js</name></action>
-
-
+            <action method="addItem" ifconfig="onepagecheckout/general/jquery"><type>skin_js</type><name>deivison/osc.validation.js</name></action>
         </reference>
 
 
