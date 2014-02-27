@@ -201,6 +201,15 @@
             $j('input[class*="tracoAtivo"]').focus(function(){
               $j(this).val('');
             });
+            
+                /*Script do traço do cep*/
+        	//   concertado por Willian H. F. Rodrigues willian@virtuato.com.br
+	        jQuery('input[class*="tracoAtivo"]').keypress( function(e){
+        		//console.log(e.keyCode);
+        		if (e.keyCode == 45 || e.keyCode == 109 || e.keyCode == 189){
+			        jQuery(this).attr('maxlength','9');
+        		}
+        	});
 
              /*Script do tra�o do cep*/
              /*   mexer
