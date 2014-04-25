@@ -1,9 +1,9 @@
 <?php
 /*=========================================================================================================================================================
  *
- *  PROJETO OSC MAGENTO BRASIL - VERSÃO FINAL V3.0
+ *  PROJETO OSC MAGENTO BRASIL - VERSÃƒO FINAL V3.0
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *  O módulo One Step Checkout normatizado para a localização brasileira.
+ *  O mÃ³dulo One Step Checkout normatizado para a localizaaÃ§Ã£o brasileira.
  *  site do projeto: http://onestepcheckout.com.br/
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
@@ -24,11 +24,11 @@
  *
  *
  *
- *  GOSTOU DO MÓDULO?
+ *  GOSTOU DO MÃ“DULO?
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- *  Se você gostou, se foi útil para você, se fez você economizar aquela grana pois estava prestes a pagar caro por aquele módulo pago, pois não achava uma
- *  solução gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doação de qualquer valor, não vou negar e vou ficar grato! você
- *  pode fazer isso visitando a página do projeto em: http://onestepcheckout.com.br/
+ *  Se vocÃª gostou, se foi Ãºtil para vocÃª, se fez vocÃª economizar aquela grana pois estava prestes a pagar caro por aquele mÃ³dulo pago, pois nÃ£o achava uma
+ *  soluÃ§Ã£o gratuita que te atendesse e queira prestigiar o trabalho feito efetuando uma doaÃ§Ã£o de qualquer valor, nÃ£o vou negar e vou ficar grato! VocÃª
+ *  pode fazer isso visitando a pÃ¡gina do projeto em: http://onestepcheckout.com.br/
  *  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
 /*=========================================================================================================================================================
@@ -44,6 +44,7 @@ if ($jquery !== '0') :
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)?>frontend/base/default/deivison/jquery.maskedinput-1.2.2.min.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)?>frontend/base/default/deivison/deivison.js"></script>
 <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)?>frontend/base/default/deivison/osc.validation.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)?>frontend/base/default/deivison/jquery.autotab-1.1b.js"></script>
 <?php endif; ?>
 
 
@@ -385,7 +386,7 @@ if ($jquery !== '0') :
             $j('.boxpj').hide();
             $j('.boxpf').show();
 
-            /*Exibe ou oculta o entregar em outro endereço conforme a selecao do tipo pessoa*/
+            /*Exibe ou oculta o entregar em outro endereï¿½o conforme a selecao do tipo pessoa*/
             $j('li.options').find("label:contains('Entregar')").css('visibility', 'visible');
             $j('input[name*="[same_as_billing]"]').css('visibility', 'visible');
 
@@ -408,7 +409,7 @@ if ($jquery !== '0') :
             $j('.boxpj').show();
             $j('.boxpf').hide();
 
-            /*Exibe ou oculta o entregar em outro endereço conforme a selecao do tipo pessoa*/
+            /*Exibe ou oculta o entregar em outro endereï¿½o conforme a selecao do tipo pessoa*/
             $j('li.options').find("label:contains('Entregar')").css('visibility', 'hidden');
             $j('input[name*="[same_as_billing]"]').css('visibility', 'hidden');
         }
