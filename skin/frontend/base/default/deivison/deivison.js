@@ -276,7 +276,7 @@
                     if (length == 3)
                       this.value += ")";
                     /*
-                    Testa para ver se o ddd come�a com 11 e coloca maxlength para 14
+                    Testa para ver se o ddd come�a com 11,12,13,14,15,16,17,18,19,21,22,24,27,28 e coloca maxlength para 14
                             exemplo: (11)95345-1234 que antes era assim (11)5345-1234
                     */
                     if(/(\(11\)9(5[0-9]|6[0-9]|7[01234569]|8[0-9]|9[0-9])).+/i.test(this.value) ||
@@ -317,7 +317,7 @@
                     if (length == 3)
                       this.value += ")";
                     /*
-                    Testa para ver se o ddd come�a com 11 e coloca maxlength para 14
+                    Testa para ver se o ddd come�a com 11,12,13,14,15,16,17,18,19,21,22,24,27,28 e coloca maxlength para 14
                             exemplo: (11)95345-1234 que antes era assim (11)5345-1234
                     */
                     if(/(\(11\)9(5[0-9]|6[0-9]|7[01234569]|8[0-9]|9[0-9])).+/i.test(this.value) ||
