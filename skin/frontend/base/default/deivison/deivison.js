@@ -203,19 +203,14 @@
             });
 
              /*Script do tra�o do cep*/
-             /*   mexer
             $j('input[class*="tracoAtivo"]').keydown( function(e){
                   $j(this).attr('maxlength','9');
                   if (e.keyCode >= 9){
-                    //length = this.value.length;
-                    length = $j(this).length;
+                    length = this.value.length;
                     if (length == 5)
-                        //this.value += "-";
-                        $j(this).value += "-";
+                        this.value += "-";
                   }
             });
-            */
-
 
             //$j('input[class*="tracoAtivo"]').mask("99999-999");     apresenta erro e nao calcula o frete
 
