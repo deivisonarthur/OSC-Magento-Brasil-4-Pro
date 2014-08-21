@@ -181,3 +181,51 @@ p.newsletter label{color:#8E8D8B;}
 * html .d-sh-tl, * html .d-sh-tr { padding-right:42px; }
 /* IE7 fix */
 *:first-child+html .onepagecheckout-window { width: 500px; }
+
+/*Recursividade*/
+
+@media (max-width: 979px) and (min-width: 768px) {
+	.persona_pj label { padding-left: 0px !important; margin-top: 3px;}
+}
+
+/* fontes menores para resolucao "tablet" */
+@media (max-width: 979px) {
+	#onepagecheckout_orderform .order-products-table th, #onepagecheckout_orderform .order-products-table td, #onepagecheckout_orderform .order-products-table td h3
+	{ font-size: 11px;}
+
+    /*Recursividade para o Theme Modern do Magento*/
+    .page, .wrapper{
+      width: auto !important;
+      max-width:979px !important;
+      min-width: 767px !important;
+    }
+    .main{
+      width: auto !important;
+      max-width: 900px !important;
+      min-width: 767px !important;
+    }
+
+
+}
+
+/* mobile responsive: sem colunas */
+@media (max-width: 767px) {
+	#onepagecheckout_orderform .col3-set > div { float: none; width: 100% !important; margin-left: 0 !important; }
+	.onepagecheckout_datafields .col-1 .form_fields .short { width: 50%;}
+	.onepagecheckout_datafields .two_fields .ccd-first { margin-right: 0; }
+	.onepagecheckout_loginarea a { display: block;}
+
+    /*Recursividade para o Theme Modern do Magento*/
+    .page, .wrapper{
+      width: auto !important;
+      max-width:767px !important;
+      min-width: 150px !important;
+    }
+
+
+    .main{
+      width: auto !important;
+      max-width: 767px !important;
+      min-width: 150px !important;
+    }
+} 
